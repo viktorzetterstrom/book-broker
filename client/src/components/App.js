@@ -1,18 +1,30 @@
 import React from 'react';
-import { BrowserRouter, Route, Link } from "react-router-dom";
-import AuthExample from './AuthTest';
 import './App.css';
-import Login from './Login';
-import CreateUser from './CreateUser';
+import { BrowserRouter, Route, Link } from 'react-router-dom'
+import Login from './authentication/Login';
+import SignUp from './authentication/SignUp';
+import PrivateRoute from './authentication/PrivateRoute';
+import SignOutButton from './authentication/SignOutButton';
+
+const Protected = () => <h3>Protected</h3>;
 
 function App() {
   return (
     <div className="App">
-      <AuthExample />
+    <BrowserRouter>
+        <div>
+          <SignOutButton />
+          <ul>
+            <li><Link to="/signup">Sign up</Link></li>
+            <li><Link to="/protected">Protected Page</Link></li>
+          </ul>
+          <Route path="/signup" component={SignUp} />
+          <Route path="/login" component={Login} />
+          <PrivateRoute path='/protected' component={Protected} />
+        </div>
+      </BrowserRouter>
     </div>
   );
 }
-
-
 
 export default App;

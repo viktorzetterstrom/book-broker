@@ -1,6 +1,6 @@
 import React from 'react';
 
-export default function CreateUser(props) {
+export default function SignUp(props) {
   return (
     <form method="POST" action="/api/users">
       <label>Username<input name="username" type="text" required/></label>
