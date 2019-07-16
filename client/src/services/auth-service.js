@@ -1,6 +1,6 @@
 const authService = {
   isAuthenticated: false,
-  authenticate(username, password, cb) {
+  login(username, password, cb) {
     this.isAuthenticated = true
     fetch('/api/users/login', {
       method: 'POST',
@@ -12,11 +12,25 @@ const authService = {
       })
     })
       .then(res => res.json())
-      .then(console.log)
+      .then(json => cb(json));
+  },
+  signup(username, email, password, cb) {
+    fetch('/api/users/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username, email, password
+      })
+    })
+      .then(res => res.json())
+      .then(json => cb(json));
   },
   signout(cb) {
     this.isAuthenticated = false
-    setTimeout(cb, 100)
+    fetch('/api/users/logout', { method: 'POST' })
+      .then(() => cb());
   }
 };
 

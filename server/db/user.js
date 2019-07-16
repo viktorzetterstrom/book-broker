@@ -13,8 +13,8 @@ const add = (username, email, hash, cb) => {
     (error, result) => {
       if (error) return cb(error.constraint);
       cb(null, result.rows[0]);
-  });
-}
+    });
+};
 
 const getByName = (username, cb) => {
   pool.query('SELECT * FROM "user" WHERE username = $1',
@@ -22,8 +22,8 @@ const getByName = (username, cb) => {
     (error, result) => {
       if (error) return cb(error);
       cb(null, result.rows);
-  });
-}
+    });
+};
 
 const getById = (id, cb) => {
   pool.query('SELECT * FROM "user" WHERE id = $1',
@@ -31,8 +31,8 @@ const getById = (id, cb) => {
     (error, result) => {
       if (error) return cb(error);
       cb(null, result.rows);
-  });
-}
+    });
+};
 
 module.exports = {
   add,

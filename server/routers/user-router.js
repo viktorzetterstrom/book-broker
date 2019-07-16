@@ -1,20 +1,17 @@
 const express = require('express');
 const bcrypt = require('bcrypt');
-const db = require('./db');
+const db = require('../db');
 const router = express.Router();
 const passport = require('passport');
-
-
-router.get('/secret', (req, res) => {
-  console.log(req.isAuthenticated());
-  res.status(200).json({auth:req.isAuthenticated()});
-});
 
 router.post('/login',
   passport.authenticate('login'),
   (req, res) => {
-    console.log('Login-route', req.isAuthenticated());
-    res.json({ auth: req.isAuthenticated() });
+    res.json({
+      username: req.user.username,
+      id: req.user.id,
+      email: req.user.email
+    });
   });
 
 router.post('/logout', (req, res) => {
@@ -27,14 +24,13 @@ router.post('/signup', (req, res) => {
   const { username, email, password } = req.body;
 
   bcrypt.hash(password, saltRounds, (err, hash) => {
-    db.user.add(username, email, hash, (error, id) => {
+    db.user.add(username, email, hash, (error) => {
       if(error) {
-        res.status(409).json(error.constraint);
+        return res.status(409).json(false);
       }
-      res.status(201).json(id);
+      res.status(201).json(true);
     });
   });
 });
-
 
 module.exports = router;

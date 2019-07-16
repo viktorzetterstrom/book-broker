@@ -1,10 +1,10 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const passport = require('passport');
-const strategies = require('./strategies');
+const strategies = require('./authentication/strategies');
+const serializer = require('./authentication/serializer');
 const session = require('express-session');
-const userRouter = require('./user-router');
-const serializer = require('./serializer')
+const userRouter = require('./routers/user-router');
 
 const app = express();
 
