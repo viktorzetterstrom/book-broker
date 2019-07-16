@@ -8,7 +8,8 @@ export default function Login(props) {
 
   const login = e => {
     e.preventDefault();
-    authService.authenticate(() => setRedirectToReferrer(true));
+    console.log(e.target.username.value);
+    authService.authenticate(e.target.username.value, e.target.password.value, () => setRedirectToReferrer(true));
   };
 
   if (redirectToReferrer === true) return <Redirect to={from} />;

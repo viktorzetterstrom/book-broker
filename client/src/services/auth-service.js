@@ -1,8 +1,18 @@
 const authService = {
   isAuthenticated: false,
-  authenticate(cb) {
+  authenticate(username, password, cb) {
     this.isAuthenticated = true
-    setTimeout(cb, 100)
+    fetch('/api/users/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username, password
+      })
+    })
+      .then(res => res.json())
+      .then(console.log)
   },
   signout(cb) {
     this.isAuthenticated = false
