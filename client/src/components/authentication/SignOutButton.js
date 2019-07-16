@@ -1,6 +1,6 @@
 import React from 'react';
-import {withRouter} from 'react-router-dom';
-import authService from './auth-service';
+import { withRouter } from 'react-router-dom';
+import authService from '../../services/auth-service';
 
 const SignOutButton = withRouter(({ history }) => (
   authService.isAuthenticated ? (

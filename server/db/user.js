@@ -7,7 +7,7 @@ const pool = new Pool({
   port: 5432,
 });
 
-const addUser = (username, email, hash, cb) => {
+const add = (username, email, hash, cb) => {
   pool.query('INSERT INTO "user" (username, email, password) VALUES ($1, $2, $3) RETURNING id',
     [username, email, hash],
     (error, result) => {
@@ -16,7 +16,7 @@ const addUser = (username, email, hash, cb) => {
   });
 }
 
-const getUserByName = (username, cb) => {
+const getByName = (username, cb) => {
   pool.query('SELECT * FROM "user" WHERE username = $1',
     [username],
     (error, result) => {
@@ -25,7 +25,7 @@ const getUserByName = (username, cb) => {
   });
 }
 
-const getUserById = (id, cb) => {
+const getById = (id, cb) => {
   pool.query('SELECT * FROM "user" WHERE id = $1',
     [id],
     (error, result) => {
@@ -35,7 +35,7 @@ const getUserById = (id, cb) => {
 }
 
 module.exports = {
-  addUser,
-  getUserByName,
-  getUserById
+  add,
+  getByName,
+  getById
 };

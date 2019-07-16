@@ -11,7 +11,7 @@ const Protected = () => <h3>Protected</h3>;
 function App() {
   return (
     <div className="App">
-    <BrowserRouter>
+      <BrowserRouter>
         <div>
           <SignOutButton />
           <ul>

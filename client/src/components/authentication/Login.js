@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import { Redirect } from 'react-router-dom';
-import authService from './auth-service';
+import authService from '../../services/auth-service';
 
 export default function Login(props) {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
@@ -8,17 +8,17 @@ export default function Login(props) {
 
   const login = e => {
     e.preventDefault();
-    authService.authenticate(() => setRedirectToReferrer(true))
-  }
+    authService.authenticate(() => setRedirectToReferrer(true));
+  };
 
-  if (redirectToReferrer === true) return <Redirect to={from} />
+  if (redirectToReferrer === true) return <Redirect to={from} />;
   else return (
-  <form onSubmit={login}>
-    <label>Username<input name="username" type="text" /></label>
-    <label>Password<input name="password" type="password" /></label>
-    <input type="submit" />
-  </form>
-  )
+    <form onSubmit={login}>
+      <label>Username<input name="username" type="text" /></label>
+      <label>Password<input name="password" type="password" /></label>
+      <input type="submit" />
+    </form>
+  );
 };
 
 
