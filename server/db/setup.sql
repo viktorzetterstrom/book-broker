@@ -2,7 +2,7 @@ DROP TABLE IF EXISTS "user";
 
 CREATE TABLE "user" (
   id SERIAL PRIMARY KEY,
-  username VARCHAR,
-  email VARCHAR,
+  username VARCHAR UNIQUE,
+  email VARCHAR UNIQUE,
   password VARCHAR
 );

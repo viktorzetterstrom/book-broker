@@ -9,26 +9,42 @@ const app = express();
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-passport.use(user.authStrategy);
+passport.use('login', user.loginStrategy);
+passport.use('signup', user.signUpStrategy);
 app.use(passport.initialize());
 app.use(passport.session());
 
-passport.serializeUser((user, cb) => {
-  cb(null, user.id);
+passport.serializeUser((user, done) => {
+  console.log("serialize", user);
+  done(null, user.id);
 });
 
-passport.deserializeUser((id, cb) => {
+passport.deserializeUser((id, done) => {
+  console.log("deserialize", id);
   db.getUserById(id, function (err, user) {
-    if (err) { return cb(err); }
-    cb(null, user);
+    if (err) return done(err);
+    done(null, user);
   });
 });
+
+app.get('/api/secret',
+  passport.authenticate('session'), (req, res) => {
+    console.log('secret', req.isAuthenticated());
+    res.json({ auth: true });
+  });
 
 app.post('/api/login',
-  passport.authenticate('local', { failureRedirect: '/doesnotwork' }),
+  passport.authenticate('local'),
   (req, res) => {
-    res.redirect('/home');
+    console.log('login', req.isAuthenticated());
+    res.json({ auth: true });
   });
-app.post('/api/users', user.createUser);
+
+app.post('/api/signup',
+  passport.authenticate('signup'),
+  (req, res) => {
+    console.log('signup', req.isAuthenticated());
+    res.json({ auth: true });
+  });
 
 app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
