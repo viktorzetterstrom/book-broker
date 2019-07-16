@@ -20,12 +20,9 @@ function App() {
           <div>
             <h3>{currentUser.user}</h3>
             <SignOutButton />
-            <ul>
-              <li><Link to="/signup">Sign up</Link></li>
-              <li><Link to="/protected">Protected Page</Link></li>
-            </ul>
-            <Route path="/signup" component={SignUp} />
-            <Route path="/login" component={Login} />
+            <Route exact path="/signup" component={SignUp} />
+            <Route exact path="/" component={Login} />
+            <Route exact path="/login" component={Login} />
             <PrivateRoute path='/protected' component={Protected} />
           </div>
         </BrowserRouter>

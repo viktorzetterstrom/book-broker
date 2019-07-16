@@ -1,8 +1,9 @@
 import React, { useContext, useState } from 'react';
 import authService from '../../services/auth-service';
 import UserContext from '../../contexts/UserContext';
-import { Redirect } from 'react-router-dom';
-
+import { Redirect, Link } from 'react-router-dom';
+import Button from '../Button';
+import Form, { Input, Label } from '../Form';
 
 export default function SignUp(props) {
   const userContext = useContext(UserContext);
@@ -26,11 +27,14 @@ export default function SignUp(props) {
 
   if (redirectToReferrer === true) return <Redirect to={from} />;
   else return (
-    <form onSubmit={signUp}>
-      <label>Username<input name="username" type="text" required /></label>
-      <label>Email<input name="email" type="email" required /></label>
-      <label>Password<input name="password" type="password" required /></label>
-      <input type="submit" />
-    </form>
+    <div>
+      <Form submitHandler={signUp}>
+        <Label>Username<Input name="username" type="text" required /></Label>
+        <Label>Email<Input name="email" type="email" required /></Label>
+        <Label>Password<Input name="password" type="password" required /></Label>
+        <Button>Sign up</Button>
+      </Form>
+      <Link to="/login"><Button>To log in</Button></Link>
+    </div>
   );
 };
