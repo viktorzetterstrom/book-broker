@@ -1,14 +1,13 @@
 import React, { useContext, useState } from 'react';
 import authService from '../../services/auth-service';
 import UserContext from '../../contexts/UserContext';
-import { Redirect, Link } from 'react-router-dom';
-import Button from '../Button';
-import Form, { Input, Label } from '../Form';
+import { Link } from 'react-router-dom';
+import { Button, Form, Input, Label } from '../basic-components';
 
-export default function SignUp(props) {
+export function SignUp(props) {
   const userContext = useContext(UserContext);
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
-  const { from } = props.location.state || { from: { pathname: '/' } };
+  // const { from } = props.location.state || { from: { pathname: '/' } };
 
   const signUp = e => {
     e.preventDefault();
@@ -25,8 +24,8 @@ export default function SignUp(props) {
     });
   };
 
-  if (redirectToReferrer === true) return <Redirect to={from} />;
-  else return (
+  // if (redirectToReferrer === true) return <Redirect to={from} />;
+  return (
     <div>
       <Form submitHandler={signUp}>
         <Label>Username<Input name="username" type="text" required /></Label>
@@ -34,7 +33,6 @@ export default function SignUp(props) {
         <Label>Password<Input name="password" type="password" required /></Label>
         <Button>Sign up</Button>
       </Form>
-      <Link to="/login"><Button>To log in</Button></Link>
     </div>
   );
 };

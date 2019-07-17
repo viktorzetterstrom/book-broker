@@ -2,7 +2,7 @@ import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import authService from '../../services/auth-service';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+export const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
     authService.isAuthenticated === true
       ? <Component {...props} />
@@ -12,5 +12,3 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
       />
   )} />
 )
-
-export default PrivateRoute;

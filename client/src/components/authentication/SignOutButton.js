@@ -2,9 +2,9 @@ import React, { useContext } from 'react';
 import { withRouter } from 'react-router-dom';
 import authService from '../../services/auth-service';
 import UserContext from '../../contexts/UserContext';
-import Button from '../Button';
+import { Button } from '../basic-components';
 
-const SignOutButton = withRouter(({ history }) => {
+export const SignOutButton = withRouter(({ history }) => {
   const userContext = useContext(UserContext)
 
   return authService.isAuthenticated ? (
@@ -20,5 +20,3 @@ const SignOutButton = withRouter(({ history }) => {
     <p>You are not logged in.</p>
   )
 });
-
-export default SignOutButton;

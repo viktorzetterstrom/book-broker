@@ -1,11 +1,4 @@
-const { Pool } = require('pg');
-
-const pool = new Pool({
-  user: 'viktor',
-  host: 'localhost',
-  database: 'project',
-  port: 5432,
-});
+const pool = require('./pool');
 
 const add = (username, email, hash, cb) => {
   pool.query('INSERT INTO "user" (username, email, password) VALUES ($1, $2, $3) RETURNING id',

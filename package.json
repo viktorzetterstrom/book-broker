@@ -5,7 +5,7 @@
   "main": "user-queries.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start-server": "nodemon server/index.js",
+    "start-server": "cd server && nodemon index.js",
     "start-client": "cd client && npm start",
     "reset-db": "psql -d project -f server/db/setup.sql"
   },

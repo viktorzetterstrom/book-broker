@@ -1,15 +1,14 @@
 import React, { useState, useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
-import { Redirect, Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import authService from '../../services/auth-service';
-import Button from '../Button';
-import Form, { Input, Label } from '../Form';
+import { Button, Form, Input, Label } from '../basic-components';
 
 
-export default function Login(props) {
+export function Login({ from='/books/add' }) {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
   const userContext = useContext(UserContext);
-  const { from } = props.location.state || { from: { pathname: '/' } };
+  // const { from } = props.location.state || { from: { pathname: '/' } };
 
   const login = e => {
     e.preventDefault();
@@ -21,16 +20,15 @@ export default function Login(props) {
     });
   };
 
-  if (redirectToReferrer === true) return <Redirect to={from} />;
-  else return (
-    <div>
-      <Form submitHandler={login}>
-        <Label>Username<Input name="username" type="text" /></Label>
-        <Label>Password<Input name="password" type="password" /></Label>
-        <Button>Log in</Button>
-      </Form>
-      <Link to="/signup"><Button>To sign up</Button></Link>
-    </div>
+  if (redirectToReferrer === true) {
+    setRedirectToReferrer(false);
+    return <Redirect to={from} />;
+  } else return (
+    <Form submitHandler={login}>
+      <Label>Username<Input name="username" type="text" /></Label>
+      <Label>Password<Input name="password" type="password" /></Label>
+      <Button>Log in</Button>
+    </Form>
   );
 };
 
