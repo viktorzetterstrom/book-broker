@@ -7,7 +7,7 @@ export default function ShowTradesView() {
   useEffect(() => {
     fetch('/api/trades')
       .then(result => result.json())
-      .then(json => setTimeout(() => setTrades(json), 2000));
+      .then(json => setTimeout(() => setTrades(json), 800));
   }, []);
 
   return (

@@ -13,8 +13,10 @@ const Details = styled.p`
 `
 
 const CardContainer = styled.div`
+  width: 100%;
   padding: 10px;
   margin-top: 20px;
+  border-bottom: 1px solid black;
 `
 
 const DetailsContainer = styled.div`
@@ -23,6 +25,8 @@ const DetailsContainer = styled.div`
 `
 
 const ImgContainer = styled.div`
+  margin-right: 10px;
+  margin-left: 10px;
   width: 80px;
 `
 
@@ -48,9 +52,9 @@ export function TradeCard({
   return (
     <CardContainer>
       <FlexContainerHorizontal>
-        <div>
+        <ImgContainer>
           <Img src={book_image} alt="book" />
-        </div>
+        </ImgContainer>
         <DetailsContainer>
           <Heading>{book_title}</Heading>
           <Details>By: {book_author}</Details>
