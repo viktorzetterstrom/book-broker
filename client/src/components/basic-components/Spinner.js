@@ -26,10 +26,10 @@ import styled, { keyframes } from 'styled-components';
 
 export function Spinner() {
   return (
-    <div class="spinner-container">
-      <div class="spinner spinner-slow"></div>
-      <div class="spinner spinner-medium"></div>
-      <div class="spinner spinner-fast"></div>
+    <div className="spinner-container">
+      <div className="spinner spinner-slow"></div>
+      <div className="spinner spinner-medium"></div>
+      <div className="spinner spinner-fast"></div>
     </div>
   )
 }

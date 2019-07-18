@@ -9,7 +9,7 @@ export default function SignInView() {
       <Header />
       <Login />
       <FlexContainerVertical>
-        <Link to="/signup"><Button>To sign up</Button></Link>
+        <Link to="/register"><Button>Register</Button></Link>
       </FlexContainerVertical>
     </div>
   );

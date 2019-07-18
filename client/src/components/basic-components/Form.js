@@ -19,9 +19,9 @@ export const Label = styled.label`
   font-size: 12px;
 `
 
-export function Form({ submitHandler, children }) {
+export function Form({ onChange, submitHandler, children }) {
   return (
-    <StyledForm onSubmit={submitHandler}>
+    <StyledForm onChange={onChange} onSubmit={submitHandler}>
       {children}
     </StyledForm>
   )

@@ -30,22 +30,33 @@ const Img = styled.img`
   width: 100%;
 `
 
-export function BookCard({ hideButton, book, clickHandler }) {
+export function TradeCard({
+  id,
+  goodreads_book_id,
+  goodreads_author_id,
+  book_title,
+  book_author,
+  book_publication_year,
+  book_rating,
+  book_image,
+  trade_description,
+  book_condition,
+  owner_id,
+  onClick,
+}) {
+
   return (
     <CardContainer>
       <FlexContainerHorizontal>
         <div>
-          <Img src={book.bookImgUrl} alt="book" />
+          <Img src={book_image} alt="book" />
         </div>
         <DetailsContainer>
-          <Heading>{book.bookTitle}</Heading>
-          <Details>By: {book.authorName}</Details>
-          <Details>Published: {book.publicationYear}</Details>
-          {
-            hideButton
-              ? <></>
-              : <Button card onClick={() => clickHandler(book)}>Add book</Button>
-          }
+          <Heading>{book_title}</Heading>
+          <Details>By: {book_author}</Details>
+          <Details>Published: {book_publication_year}</Details>
+          <Details>Condition: {book_condition}</Details>
+          <Button card onClick={onClick}>View more</Button>
         </DetailsContainer>
       </FlexContainerHorizontal>
     </CardContainer>

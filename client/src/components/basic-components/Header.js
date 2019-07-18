@@ -19,7 +19,7 @@ export function Header() {
       <FlexContainerVertical>
         <StyledH1>Bookbroker</StyledH1>
         <p>Yada yada yada, lodum fbdjfjhd jbdf</p>
-        <Link to="/"><Button>Browse</Button></Link>
+        <Link to="/trades"><Button>Browse</Button></Link>
       </FlexContainerVertical>
     </StyledHeader>
   );

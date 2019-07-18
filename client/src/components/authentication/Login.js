@@ -5,7 +5,7 @@ import authService from '../../services/auth-service';
 import { Button, Form, Input, Label } from '../basic-components';
 
 
-export function Login({ from='/books/add/trade' }) {
+export function Login({ from='/trades' }) {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
   const userContext = useContext(UserContext);
   // const { from } = props.location.state || { from: { pathname: '/' } };

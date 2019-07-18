@@ -5,3 +5,6 @@ export * from './Form';
 export * from './Header';
 export * from './BookCard';
 export * from './Spinner';
+export * from './TradeCard';
+export * from './NavBar';
+export * from './BookSearch';

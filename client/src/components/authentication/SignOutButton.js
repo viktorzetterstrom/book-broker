@@ -9,12 +9,12 @@ export const SignOutButton = withRouter(({ history }) => {
 
   return authService.isAuthenticated ? (
     <p>
-      Welcome! <Button onClick={() => {
+      Logged in as {userContext.user.username} <Button onClick={() => {
         authService.signout(() => {
-          history.push('/')
+          history.push('/trades')
           userContext.setUser(null);
         });
-      }}>Sign out</Button>
+      }}>Log out</Button>
     </p>
   ) : (
     <p>You are not logged in.</p>

@@ -4,9 +4,10 @@ import { BrowserRouter, Route, Link } from 'react-router-dom'
 import { PrivateRoute } from './authentication';
 import SignUpView from './views/SignUpView';
 import SignInView from './views/SignInView';
-import CreateTradeView from './views/CreateTradeView';
 import AddTradeView from './views/AddTradeView';
+import ShowTradesView from './views/ShowTradesView';
 import UserContext, { UserProvider } from '../contexts/UserContext';
+import { NavBar } from './basic-components';
 
 
 const Protected = () => <h3>Protected</h3>;
@@ -17,36 +18,18 @@ function App() {
   const currentUser = useContext(UserContext);
   const [user, setUser] = useState(null);
 
-  const userLoggedInRoutes = (
-    <>
-      <Route exact path="/" component={Bogus} />
-      <Route exact path="/login" component={CreateTradeView} />
-      <Route exact path="/signup" component={Bogus} />
-      <Route exact path='/books/add' component={CreateTradeView} />
-      <Route exact path='/books/add/trade' component={AddTradeView} />
-      <PrivateRoute path='/protected' component={Protected} />
-    </>
-  );
-
-  const userNotLoggedInRoutes = (
-    <>
-      <Route exact path="/" component={SignInView} />
-      <Route exact path="/login" component={SignInView} />
-      <Route exact path="/signup" component={SignUpView} />
-      <Route exact path='/books/add' component={CreateTradeView} />
-      <Route exact path='/books/add/trade' component={AddTradeView} />
-    </>
-  );
-
   return (
     <UserProvider value={{ user, setUser }}>
       <div className="App">
         <BrowserRouter>
-          {
-            user
-              ? userLoggedInRoutes
-              : userNotLoggedInRoutes
-          }
+          <NavBar />
+          <>
+            <Route exact path="/" component={SignInView} />
+            <Route exact path="/login" component={SignInView} />
+            <Route exact path="/register" component={SignUpView} />
+            <Route exact path='/trades/add' component={AddTradeView} />
+            <Route exact path='/trades' component={ShowTradesView} />
+          </>
         </BrowserRouter>
       </div>
     </UserProvider>

@@ -31,7 +31,7 @@ export function SignUp(props) {
         <Label>Username<Input name="username" type="text" required /></Label>
         <Label>Email<Input name="email" type="email" required /></Label>
         <Label>Password<Input name="password" type="password" required /></Label>
-        <Button>Sign up</Button>
+        <Button>Register</Button>
       </Form>
     </div>
   );
