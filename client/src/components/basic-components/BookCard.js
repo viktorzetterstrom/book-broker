@@ -2,20 +2,52 @@ import React from 'react';
 import { Button, FlexContainerHorizontal } from './';
 import styled from 'styled-components';
 
+const Heading = styled.h3`
+  margin-top: 0;
+  font-size: 14px;
+`
 
+const Details = styled.p`
+  margin: 0;
+  font-size: 12px;
+`
 
-export function BookCard({ book, onClick }) {
-  return (<FlexContainerHorizontal>
-    <div>
-      <img src={book.bookImgUrl} alt="book" />
-    </div>
-    <div>
-      <h3>{book.bookTitle}</h3>
-      <p>By: {book.authorName}</p>
-      <p>Published: {book.publicationYear}</p>
-      <p>Rating: {book.averageRating}</p>
-      <Button onClick={onClick}>Add book</Button>
-    </div>
-  </FlexContainerHorizontal>
+const CardContainer = styled.div`
+  padding: 10px;
+  margin-top: 20px;
+`
+
+const DetailsContainer = styled.div`
+  width: 75%;
+  padding: 10px;
+`
+
+const ImgContainer = styled.div`
+  width: 80px;
+`
+
+const Img = styled.img`
+  width: 100%;
+`
+
+export function BookCard({ hideButton, book, onClick }) {
+  return (
+    <CardContainer>
+      <FlexContainerHorizontal>
+        <div>
+          <Img src={book.bookImgUrl} alt="book" />
+        </div>
+        <DetailsContainer>
+          <Heading>{book.bookTitle}</Heading>
+          <Details>By: {book.authorName}</Details>
+          <Details>Published: {book.publicationYear}</Details>
+          {
+            hideButton
+              ? <></>
+              : <Button card onClick={onClick}>Add book</Button>
+          }
+        </DetailsContainer>
+      </FlexContainerHorizontal>
+    </CardContainer>
   )
 }

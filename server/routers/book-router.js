@@ -9,7 +9,6 @@ router.get('/', async (req, res) => {
   const field = req.query.field;
 
   const result = await goodreads.getBooks(query, page, field);
-
   res.status(200).json(result);
 });
 

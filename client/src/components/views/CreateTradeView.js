@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 import queryString from 'query-string';
 import { Login } from '../authentication';
 import { Link } from 'react-router-dom';
-import { Button, Header, FlexContainerVertical, BookCard, Form, Input, Label } from '../basic-components';
-// import styled from 'styled-components';
+import { Button, Header, FlexContainerVertical, BookCard, Form, Input, Label, Spinner } from '../basic-components';
+import styled from 'styled-components';
 
-// const StyledLi = styled.li`
-//   list-style: none;
-// `
+const StyledLi = styled.li`
+  list-style: none;
+`
 
 export default function CreateTradeView() {
   const [books, setBooks] = useState(null);
@@ -20,10 +20,6 @@ export default function CreateTradeView() {
       .then(data => setBooks(data));
   }
 
-  const addBook = (book) => {
-
-  }
-
   return (
     <div>
       <Form submitHandler={displayQuery}>
@@ -32,11 +28,11 @@ export default function CreateTradeView() {
       </Form>
       <ul>
         {books ? books.map((book, i) => (
-          <li key={i}>
+          <StyledLi key={i}>
             <BookCard book={book} />
-          </li>
+          </StyledLi>
         )
-        ) : <></>}
+        ) : <Spinner/>}
       </ul>
     </div>
   );

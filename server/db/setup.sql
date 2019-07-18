@@ -1,4 +1,7 @@
+DROP TABLE IF EXISTS "trade";
 DROP TABLE IF EXISTS "user";
+
+
 CREATE TABLE "user" (
   id SERIAL PRIMARY KEY,
   username VARCHAR UNIQUE,
@@ -6,7 +9,6 @@ CREATE TABLE "user" (
   password VARCHAR
 );
 
-DROP TABLE IF EXISTS "trade"
 CREATE TABLE "trade" (
   id SERIAL PRIMARY KEY,
   goodreads_book_id INTEGER,
@@ -19,5 +21,5 @@ CREATE TABLE "trade" (
   trade_description VARCHAR,
   book_condition INTEGER,
   owner_id INTEGER,
-  FOREIGN KEY (owner_id) REFERENCES "user"(id),
+  FOREIGN KEY (owner_id) REFERENCES "user"(id)
 );

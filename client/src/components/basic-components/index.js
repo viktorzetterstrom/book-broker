@@ -4,3 +4,4 @@ export * from './FlexContainerHorizontal';
 export * from './Form';
 export * from './Header';
 export * from './BookCard';
+export * from './Spinner';

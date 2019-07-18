@@ -22,7 +22,7 @@ router.post('/logout', (req, res) => {
 router.post('/signup', (req, res) => {
   const saltRounds = 10;
   const { username, email, password } = req.body;
-
+  
   bcrypt.hash(password, saltRounds, (err, hash) => {
     db.user.add(username, email, hash, (error) => {
       if(error) {

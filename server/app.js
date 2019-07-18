@@ -6,6 +6,7 @@ const serializer = require('./authentication/serializer');
 const session = require('express-session');
 const userRouter = require('./routers/user-router');
 const bookRouter = require('./routers/book-router');
+const tradeRouter = require('./routers/trade-router');
 
 
 const app = express();
@@ -26,5 +27,6 @@ passport.deserializeUser(serializer.deserialize);
 
 app.use('/api/users', userRouter);
 app.use('/api/books', bookRouter);
+app.use('/api/trades', tradeRouter);
 
 module.exports = app;

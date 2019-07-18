@@ -1,7 +1,7 @@
 import React from 'react';
 import { Login } from '../authentication';
 import { Link } from 'react-router-dom';
-import {Button, Header, FlexContainerVertical} from '../basic-components';
+import { Button, Header, FlexContainerVertical } from '../basic-components';
 
 export default function SignInView() {
   return (

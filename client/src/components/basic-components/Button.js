@@ -8,9 +8,17 @@ const StyledButton = styled.button`
   border-radius: 3px;
   padding: 8px 12px;
   margin-top: 5px;
-  width: 200px;
+  width: ${props => props.card ? 'auto' : '200px'};
+  transition: 0.3s;
+  :hover {
+    background-color: white;
+    color: grey;
+  }
+  :active {
+    transform: scale(0.95);
+  }
 `
 
-export function Button({ onClick, children }) {
-  return <StyledButton onClick={onClick}>{children}</StyledButton>
+export function Button(props) {
+  return <StyledButton {...props} onClick={props.onClick}>{props.children}</StyledButton>
 }

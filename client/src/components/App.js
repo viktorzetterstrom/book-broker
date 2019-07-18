@@ -5,6 +5,7 @@ import { PrivateRoute } from './authentication';
 import SignUpView from './views/SignUpView';
 import SignInView from './views/SignInView';
 import CreateTradeView from './views/CreateTradeView';
+import AddTradeView from './views/AddTradeView';
 import UserContext, { UserProvider } from '../contexts/UserContext';
 
 
@@ -21,7 +22,8 @@ function App() {
       <Route exact path="/" component={Bogus} />
       <Route exact path="/login" component={CreateTradeView} />
       <Route exact path="/signup" component={Bogus} />
-      <PrivateRoute exact path='/books/add' component={CreateTradeView} />
+      <Route exact path='/books/add' component={CreateTradeView} />
+      <Route exact path='/books/add/trade' component={AddTradeView} />
       <PrivateRoute path='/protected' component={Protected} />
     </>
   );
@@ -31,6 +33,8 @@ function App() {
       <Route exact path="/" component={SignInView} />
       <Route exact path="/login" component={SignInView} />
       <Route exact path="/signup" component={SignUpView} />
+      <Route exact path='/books/add' component={CreateTradeView} />
+      <Route exact path='/books/add/trade' component={AddTradeView} />
     </>
   );
 
