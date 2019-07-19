@@ -19,7 +19,7 @@ const AddTradeView = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(trade)
-    }).then(console.log);
+    });
   }
 
   return (

@@ -30,7 +30,7 @@ function App() {
             <Route exact path="/register" component={SignUpView} />
             <Route exact path='/trades' component={ShowTradesView} />
             <Switch>
-              <Route exact path='/trades/add' component={AddTradeView} />
+              <PrivateRoute exact path='/trades/add' component={AddTradeView} />
               <Route exact path='/trades/:id' component={ShowTradeView} />
             </Switch>
           </>

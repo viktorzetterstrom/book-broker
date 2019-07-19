@@ -15,7 +15,7 @@ export default function ShowTradeView({ match }) {
       {
         trade.loading ? <Spinner />
           : <>
-            <TradeCard {...trade} />
+            <TradeCard {...trade} hideButton />
             <ContactForm {...trade} />
           </>
       }

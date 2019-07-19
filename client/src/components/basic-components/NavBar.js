@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Button, FlexContainerHorizontal } from './index';
 import UserContext from '../../contexts/UserContext';
 import { SignOutButton } from '../authentication';
+import authService from '../../services/auth-service';
 
 const StyledNav = styled.nav`
   background-color: hotpink;
@@ -20,6 +21,7 @@ const StyledNavButton = styled.div`
   background-color: darkgray;
   color: black;
   transition: 0.3s;
+  cursor: pointer;
   :hover {
     background-color: lightgray;
   }
@@ -32,10 +34,17 @@ export function NavBar() {
   return (
     <StyledNav>
       <Link to='/trades'><StyledNavButton>Trades</StyledNavButton></Link>
-      <Link to='/trades/add'><StyledNavButton>Create Trade</StyledNavButton></Link>
       {
         userContext.user
-          ? <SignOutButton />
+          ? <>
+              <Link to='/trades/add'><StyledNavButton>Create Trade</StyledNavButton></Link>
+              <Link to='/'><StyledNavButton onClick={() => {
+                authService.signout(() => {
+                  userContext.setUser(null);
+                });
+              }}>Log out</StyledNavButton>
+              </Link>
+            </>
           : <Link to='/login'><StyledNavButton>Log in</StyledNavButton></Link>
       }
     </StyledNav>

@@ -9,3 +9,4 @@ export * from './TradeCard';
 export * from './NavBar';
 export * from './ContactForm';
 export * from './BookSearch';
+export * from './Or';

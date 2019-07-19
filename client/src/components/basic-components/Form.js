@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items:center;
+  align-items:flex-end;
 `
 
 export const Input = styled.input`
@@ -21,7 +21,7 @@ export const Label = styled.label`
 
 export function Form(props) {
   return (
-    <StyledForm  {...props} onSubmit={props.submitHandler}>
+    <StyledForm autoComplete="off" {...props} onSubmit={props.submitHandler}>
       {props.children}
     </StyledForm>
   )

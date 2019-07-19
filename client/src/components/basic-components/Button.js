@@ -10,9 +10,11 @@ const StyledButton = styled.button`
   margin-top: 5px;
   width: ${props => props.card ? 'auto' : '200px'};
   transition: 0.3s;
+  outline: none;
   :hover {
     background-color: white;
     color: grey;
+    cursor: pointer;
   }
   :active {
     transform: scale(0.95);

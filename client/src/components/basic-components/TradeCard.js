@@ -48,6 +48,7 @@ export function TradeCard({
   book_condition,
   owner_id,
   onClick,
+  hideButton
 }) {
 
   return (
@@ -61,7 +62,11 @@ export function TradeCard({
           <Details>By: {book_author}</Details>
           <Details>Published: {book_publication_year}</Details>
           <Details>Condition: {book_condition}</Details>
-          <Link to={`/trades/${id}`}><Button card onClick={onClick}>View more</Button></Link>
+          {
+            hideButton
+              ? <></>
+              : <Link to={`/trades/${id}`}><Button card onClick={onClick}>View more</Button></Link>
+          }
         </DetailsContainer>
       </FlexContainerHorizontal>
     </CardContainer>
