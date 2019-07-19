@@ -4,15 +4,17 @@ const db = require('../db');
 
 router.get('/', async (req, res) => {
   db.trade.getAll((err, allTrades) => {
-    if (err) res.status(204).json('error');
+    if (err) return res.status(204).json('error');
     res.status(200).json(allTrades);
   });
 });
 
-// router.get('/:id', async (req, res) => {
-
-//   res.status(200).json(result);
-// });
+router.get('/:id', async (req, res) => {
+  db.trade.getById(req.params.id, (err, trade) => {
+    if (err) return res.status(204).json('error');
+    res.status(200).json(trade);
+  });
+});
 
 router.post('/', async (req, res) => {
   const trade = req.body;

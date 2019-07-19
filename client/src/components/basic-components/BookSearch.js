@@ -11,7 +11,8 @@ const StyledLi = styled.li`
 
 export function BookSearch({setActiveBook}) {
   const [books, setBooks] = useState(null);
-  let timer;
+  const [loading, setLoading] = useState(false);
+  const [timer, setTimer] = useState(null);
 
   const displayQuery = query => {
     fetch('/api/books?' + query)
@@ -20,16 +21,21 @@ export function BookSearch({setActiveBook}) {
   }
 
   const onChange = e => {
+    setTimer(clearTimeout(timer));
+    setBooks(null);
+    setLoading(true);
     const query = queryString.stringify({ q: e.target.value });
-    clearTimeout(timer);
-    timer = setTimeout(() => displayQuery(query), 1000);
+    setTimer(setTimeout(() => {
+      setLoading(false);
+      displayQuery(query);
+    }, 1000));
   }
 
 
   return (
     <div>
-      <Form onChange={onChange} submitHandler={displayQuery}>
-        <Label>Search<Input type='text' name='query' /></Label>
+      <Form onChange={onChange} submitHandler={displayQuery} autoComplete="off">
+        <Label>Search<Input autocomplete="off" type='text' name='query' /></Label>
       </Form>
       <ul>
         {books ? books.map((book, i) => (
@@ -38,6 +44,11 @@ export function BookSearch({setActiveBook}) {
           </StyledLi>
         )
         ) : <></>}
+        {
+          loading
+            ? <Spinner />
+            : <></>
+        }
       </ul>
     </div>
   );

@@ -7,4 +7,5 @@ export * from './BookCard';
 export * from './Spinner';
 export * from './TradeCard';
 export * from './NavBar';
+export * from './ContactForm';
 export * from './BookSearch';

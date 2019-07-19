@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, FlexContainerHorizontal } from './';
+import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 
 const Heading = styled.h3`
@@ -60,7 +61,7 @@ export function TradeCard({
           <Details>By: {book_author}</Details>
           <Details>Published: {book_publication_year}</Details>
           <Details>Condition: {book_condition}</Details>
-          <Button card onClick={onClick}>View more</Button>
+          <Link to={`/trades/${id}`}><Button card onClick={onClick}>View more</Button></Link>
         </DetailsContainer>
       </FlexContainerHorizontal>
     </CardContainer>

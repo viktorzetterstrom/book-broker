@@ -1,11 +1,12 @@
 import React, { useContext, useState } from 'react';
 import './App.css';
-import { BrowserRouter, Route, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import { PrivateRoute } from './authentication';
 import SignUpView from './views/SignUpView';
 import SignInView from './views/SignInView';
 import AddTradeView from './views/AddTradeView';
 import ShowTradesView from './views/ShowTradesView';
+import ShowTradeView from './views/ShowTradeView';
 import UserContext, { UserProvider } from '../contexts/UserContext';
 import { NavBar } from './basic-components';
 
@@ -27,8 +28,11 @@ function App() {
             <Route exact path="/" component={SignInView} />
             <Route exact path="/login" component={SignInView} />
             <Route exact path="/register" component={SignUpView} />
-            <Route exact path='/trades/add' component={AddTradeView} />
             <Route exact path='/trades' component={ShowTradesView} />
+            <Switch>
+              <Route exact path='/trades/add' component={AddTradeView} />
+              <Route exact path='/trades/:id' component={ShowTradeView} />
+            </Switch>
           </>
         </BrowserRouter>
       </div>
