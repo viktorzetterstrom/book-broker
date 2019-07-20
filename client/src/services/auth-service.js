@@ -14,8 +14,8 @@ const authService = {
       .then(res => res.json())
       .then(json => cb(json));
   },
-  signup(username, email, password, cb) {
-    fetch('/api/users/signup', {
+  register(username, email, password, cb) {
+    fetch('/api/users/register', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'

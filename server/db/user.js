@@ -23,7 +23,7 @@ const getById = (id, cb) => {
     [id],
     (error, result) => {
       if (error) return cb(error);
-      cb(null, result.rows);
+      cb(null, result.rows[0]);
     });
 };
 

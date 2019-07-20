@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { FlexContainerVertical, TradeCard, Spinner } from '../basic-components';
 
-export default function ShowTradesView() {
+export function ShowTradesView() {
   const [ trades, setTrades ] = useState({ loading: true });
 
   useEffect(() => {
@@ -14,7 +14,9 @@ export default function ShowTradesView() {
     <FlexContainerVertical>
       {
         trades.loading ? <Spinner />
-          : trades.map((trade, i) => <TradeCard key={i} {...trade} />)
+          : trades
+            .filter(trade => trade.trade_status === false)
+            .map((trade, i) => <TradeCard key={i} {...trade} />)
       }
     </FlexContainerVertical>
   );

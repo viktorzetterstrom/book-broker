@@ -28,8 +28,37 @@ const getById = (id, cb) => {
     });
 };
 
+const updateById = (description, condition, ownerId, id, cb) => {
+  pool.query('UPDATE "trade" SET trade_description = $1, book_condition = $2 WHERE id = $4 AND owner_id = $3',
+    [description, condition, ownerId, id],
+    (error) => {
+      if (error) return cb(error);
+      cb(null, true);
+    });
+};
+
+const deleteById = (id, cb) => {
+  pool.query('DELETE FROM trade WHERE id = $1', [id],
+    (error) => {
+      if (error) return cb(error);
+      cb(null, true);
+    });
+};
+
+const completeById = (id, cb) => {
+  pool.query('UPDATE "trade" SET trade_status = true WHERE id = $1',
+    [id],
+    (error) => {
+      if (error) return cb(error);
+      cb(null, true);
+    });
+};
+
 module.exports = {
   add,
   getAll,
-  getById
+  getById,
+  updateById,
+  deleteById,
+  completeById
 };

@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import queryString from 'query-string';
-import { Login } from '../authentication';
-import { Link } from 'react-router-dom';
-import { Button, Header, FlexContainerVertical, BookCard, Form, Input, Label, Spinner } from '.';
+import {BookCard, Form, Input, Label, Spinner } from '.';
 import styled from 'styled-components';
 
 const StyledLi = styled.li`
@@ -18,6 +16,7 @@ export function BookSearch({setActiveBook}) {
     fetch('/api/books?' + query)
       .then(res => res.json())
       .then(data => setBooks(data));
+
   }
 
   const onChange = e => {
@@ -28,13 +27,13 @@ export function BookSearch({setActiveBook}) {
     setTimer(setTimeout(() => {
       setLoading(false);
       displayQuery(query);
-    }, 1000));
+    }, 2000));
   }
 
 
   return (
     <div>
-      <Form onChange={onChange} submitHandler={displayQuery} autoComplete="off">
+      <Form onChange={onChange} autoComplete="off">
         <Label>Search<Input autocomplete="off" type='text' name='query' /></Label>
       </Form>
       <ul>

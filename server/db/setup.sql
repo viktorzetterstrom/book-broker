@@ -21,5 +21,6 @@ CREATE TABLE "trade" (
   trade_description VARCHAR,
   book_condition INTEGER,
   owner_id INTEGER,
+  trade_status BOOLEAN DEFAULT false,
   FOREIGN KEY (owner_id) REFERENCES "user"(id)
 );

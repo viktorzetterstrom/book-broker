@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, FlexContainerHorizontal } from './';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
@@ -51,6 +51,14 @@ export function TradeCard({
   hideButton
 }) {
 
+  const [owner, setOwner] = useState('');
+
+  useEffect(() => {
+    fetch(`/api/users/${owner_id}`)
+      .then(data => data.json())
+      .then(user => setOwner(user.username));
+  }, [owner_id]);
+
   return (
     <CardContainer>
       <FlexContainerHorizontal>
@@ -59,12 +67,14 @@ export function TradeCard({
         </ImgContainer>
         <DetailsContainer>
           <Heading>{book_title}</Heading>
+          <Details>Owner: {owner}</Details>
           <Details>By: {book_author}</Details>
           <Details>Published: {book_publication_year}</Details>
+          <Details>Goodreads rating: {book_rating}</Details>
           <Details>Condition: {book_condition}</Details>
           {
             hideButton
-              ? <></>
+              ? <Details>Description: {trade_description}</Details>
               : <Link to={`/trades/${id}`}><Button card onClick={onClick}>View more</Button></Link>
           }
         </DetailsContainer>

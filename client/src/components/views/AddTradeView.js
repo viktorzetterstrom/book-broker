@@ -1,10 +1,11 @@
 import React, { useState, useContext } from 'react';
-import { Button, Header, FlexContainerVertical, BookCard, Form, Input, Label, Spinner, BookSearch } from '../basic-components';
+import { Button, FlexContainerVertical, BookCard, Form, Input, Label, BookSearch } from '../basic-components';
 import UserContext from '../../contexts/UserContext';
-import styled from 'styled-components';
+import { Redirect } from 'react-router-dom';
 
-const AddTradeView = () => {
+export const AddTradeView = () => {
   const [activeBook, setActiveBook] = useState(null);
+  const [redirect, setRedirect] = useState(false);
   const userContext = useContext(UserContext);
 
   const addTrade = e => {
@@ -19,25 +20,27 @@ const AddTradeView = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(trade)
-    });
-  }
+    }).then(() => setRedirect(true));
+  };
 
   return (
-    <FlexContainerVertical>
-      {activeBook
-        ? (
-          <>
-          <BookCard hideButton book={activeBook} />
-          <Form submitHandler={addTrade}>
-            <Label>Description<textarea name='description'></textarea></Label>
-            <Label>Condition<Input name='condition' type='number' max='5' min='1' /></Label>
-            <Button>Add Trade</Button>
-          </Form>
-          </>
-        )
-        : <BookSearch setActiveBook={setActiveBook} />}
-    </FlexContainerVertical>
+    redirect
+      ? <Redirect to="/trades" />
+      : <FlexContainerVertical>
+        <BookSearch setActiveBook={setActiveBook} />
+        {activeBook
+          ? (
+            <>
+              <Button onClick={() => setActiveBook(null)}>Back</Button>
+              <BookCard hideButton book={activeBook} />
+              <Form submitHandler={addTrade}>
+                <Label>Description<textarea name='description'></textarea></Label>
+                <Label>Condition<Input name='condition' type='number' max='5' min='1' /></Label>
+                <Button>Add Trade</Button>
+              </Form>
+            </>
+          )
+          : <></>}
+      </FlexContainerVertical>
   )
 }
-
-export default AddTradeView;

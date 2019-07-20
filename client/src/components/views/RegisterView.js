@@ -1,16 +1,16 @@
 import React from 'react';
-import { Login } from '../authentication';
+import { Register } from '../authentication';
 import { Link } from 'react-router-dom';
 import { Button, Header, FlexContainerVertical, Or } from '../basic-components';
 
-export default function SignInView() {
+export function RegisterView() {
   return (
     <div>
       <Header />
       <FlexContainerVertical>
-        <Login />
+        <Register />
         <Or />
-        <Link to="/register"><Button>Register</Button></Link>
+        <Link to="/login"><Button>Log in</Button></Link>
       </FlexContainerVertical>
     </div>
   );

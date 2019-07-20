@@ -22,10 +22,6 @@ const DetailsContainer = styled.div`
   padding: 10px;
 `
 
-const ImgContainer = styled.div`
-  width: 80px;
-`
-
 const Img = styled.img`
   width: 100%;
 `

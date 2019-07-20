@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import { Button, FlexContainerHorizontal } from './index';
 import UserContext from '../../contexts/UserContext';
-import { SignOutButton } from '../authentication';
 import authService from '../../services/auth-service';
 
 const StyledNav = styled.nav`

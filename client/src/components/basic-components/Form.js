@@ -4,7 +4,7 @@ import styled from 'styled-components';
 const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
-  align-items:flex-end;
+  align-items: ${props => props.alignRight ? 'flex-end' : 'center'};
 `
 
 export const Input = styled.input`

@@ -1,6 +1,5 @@
 import React from 'react';
 import './Spinner.css';
-import styled, { keyframes } from 'styled-components';
 
 // const Container = styled.div`
 //   position: absolute;
