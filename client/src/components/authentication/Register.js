@@ -4,6 +4,7 @@ import UserContext from '../../contexts/UserContext';
 import { Redirect } from 'react-router-dom';
 import { Button, Form, Input, Label } from '../basic-components';
 
+
 export function Register(props) {
   const userContext = useContext(UserContext);
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);

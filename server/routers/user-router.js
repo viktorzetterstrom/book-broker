@@ -11,6 +11,13 @@ router.get('/:id', (req, res) => {
   });
 });
 
+router.get('/:id/trades', (req, res) => {
+  db.trade.getByOwnerId(req.params.id, (err, trades) => {
+    if (err) return res.status(204).json('error');
+    res.status(200).json(trades);
+  });
+});
+
 router.post('/login',
   passport.authenticate('login'),
   (req, res) => {

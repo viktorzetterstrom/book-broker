@@ -35,7 +35,8 @@ export function NavBar() {
       {
         userContext.user
           ? <>
-              <Link to='/trades/add'><StyledNavButton>Create Trade</StyledNavButton></Link>
+              <Link to='/trades/add'><StyledNavButton>Create</StyledNavButton></Link>
+              <Link to={`/profiles/${userContext.user.id}`}><StyledNavButton>Profile</StyledNavButton></Link>
               <Link to='/'><StyledNavButton onClick={() => {
                 authService.signout(() => {
                   userContext.setUser(null);

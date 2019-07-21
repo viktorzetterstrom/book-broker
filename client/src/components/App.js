@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import { PrivateRoute } from './authentication';
-import { RegisterView, LoginView, AddTradeView, ShowTradesView, ShowTradeView, EditTradeView } from './views';
+import { RegisterView, LoginView, AddTradeView, ShowTradesView, ShowTradeView, EditTradeView, ProfileView } from './views';
 import { UserProvider } from '../contexts/UserContext';
 import { NavBar } from './basic-components';
 
@@ -20,6 +20,7 @@ function App() {
             <Route exact path="/login" component={LoginView} />
             <Route exact path="/register" component={RegisterView} />
             <Route exact path='/trades' component={ShowTradesView} />
+            <Route exact path='/profiles/:id' component={ProfileView} />
             <Switch>
               <PrivateRoute exact path='/trades/add' component={AddTradeView} />
               <Route exact path='/trades/:id/edit' component={EditTradeView} />

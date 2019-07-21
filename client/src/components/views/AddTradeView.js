@@ -27,7 +27,6 @@ export const AddTradeView = () => {
     redirect
       ? <Redirect to="/trades" />
       : <FlexContainerVertical>
-        <BookSearch setActiveBook={setActiveBook} />
         {activeBook
           ? (
             <>
@@ -40,7 +39,7 @@ export const AddTradeView = () => {
               </Form>
             </>
           )
-          : <></>}
+          : <BookSearch setActiveBook={setActiveBook} />}
       </FlexContainerVertical>
   )
 }

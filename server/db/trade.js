@@ -28,6 +28,14 @@ const getById = (id, cb) => {
     });
 };
 
+const getByOwnerId = (ownerId, cb) => {
+  pool.query('SELECT * FROM trade WHERE owner_id = $1', [ownerId],
+    (error, results) => {
+      if (error) return cb(error);
+      cb(null, results.rows);
+    });
+};
+
 const updateById = (description, condition, ownerId, id, cb) => {
   pool.query('UPDATE "trade" SET trade_description = $1, book_condition = $2 WHERE id = $4 AND owner_id = $3',
     [description, condition, ownerId, id],
@@ -58,6 +66,7 @@ module.exports = {
   add,
   getAll,
   getById,
+  getByOwnerId,
   updateById,
   deleteById,
   completeById

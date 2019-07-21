@@ -67,7 +67,7 @@ export function TradeCard({
         </ImgContainer>
         <DetailsContainer>
           <Heading>{book_title}</Heading>
-          <Details>Owner: {owner}</Details>
+          <Details>Owner: <Link to={`/profiles/${owner_id}`}>{owner}</Link></Details>
           <Details>By: {book_author}</Details>
           <Details>Published: {book_publication_year}</Details>
           <Details>Goodreads rating: {book_rating}</Details>
