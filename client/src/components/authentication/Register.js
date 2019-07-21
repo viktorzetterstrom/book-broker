@@ -3,7 +3,7 @@ import authService from '../../services/auth-service';
 import UserContext from '../../contexts/UserContext';
 import { Redirect } from 'react-router-dom';
 import { Button, Form, Input, Label } from '../basic-components';
-
+import notifyService from '../../services/notify-service';
 
 export function Register(props) {
   const userContext = useContext(UserContext);
@@ -17,10 +17,13 @@ export function Register(props) {
     const email = e.target.email.value;
     authService.register(username, email, password, (success) => {
       if (success) {
+        notifyService.registerSuccess();
         authService.login(username, password, (user) => {
           setRedirectToReferrer(true);
           userContext.setUser(user);
         });
+      } else {
+        notifyService.registerFailure();
       }
     });
   };

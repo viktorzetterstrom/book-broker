@@ -19,7 +19,7 @@ CREATE TABLE "trade" (
   book_rating FLOAT,
   book_image VARCHAR,
   trade_description VARCHAR,
-  book_condition INTEGER,
+  book_condition VARCHAR,
   owner_id INTEGER,
   trade_status BOOLEAN DEFAULT false,
   FOREIGN KEY (owner_id) REFERENCES "user"(id)

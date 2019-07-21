@@ -11,8 +11,13 @@ const authService = {
         username, password
       })
     })
-      .then(res => res.json())
-      .then(json => cb(json));
+      .then(res => res.text())
+      .then(text => {
+        if (text === 'Unauthorized') throw new Error();
+        else return JSON.parse(text);
+      })
+      .then(json => cb(json))
+      .catch(err => cb(false));
   },
   register(username, email, password, cb) {
     fetch('/api/users/register', {

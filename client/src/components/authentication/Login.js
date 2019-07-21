@@ -3,9 +3,10 @@ import UserContext from '../../contexts/UserContext';
 import { Redirect } from 'react-router-dom';
 import authService from '../../services/auth-service';
 import { Button, Form, Input, Label } from '../basic-components';
+import notifyService from '../../services/notify-service';
 
 
-export function Login({ from='/trades' }) {
+export function Login({ from = '/trades' }) {
   const [redirectToReferrer, setRedirectToReferrer] = useState(false);
   const userContext = useContext(UserContext);
   // const { from } = props.location.state || { from: { pathname: '/' } };
@@ -15,8 +16,12 @@ export function Login({ from='/trades' }) {
     const username = e.target.username.value;
     const password = e.target.password.value
     authService.login(username, password, (user) => {
-      setRedirectToReferrer(true);
-      userContext.setUser(user);
+      if (!user) return notifyService.loginFailure();
+      else {
+        notifyService.loginSuccess(username);
+        setRedirectToReferrer(true);
+        userContext.setUser(user);
+      }
     });
   };
 

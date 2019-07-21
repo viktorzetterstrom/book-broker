@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { FlexContainerVertical, TradeCard, Spinner, ContactForm, Button } from '../basic-components';
 import UserContext from '../../contexts/UserContext';
 import { Redirect, Link } from 'react-router-dom';
-
+import notifyService from '../../services/notify-service';
 
 export function ShowTradeView({ match }) {
   const [trade, setTrade] = useState({ loading: true });
@@ -11,10 +11,16 @@ export function ShowTradeView({ match }) {
 
 
   const deleteTrade = () => fetch(`/api/trades/${match.params.id}`, { method: 'DELETE' })
-    .then(() => setRedirect(true));
+    .then(() => {
+      notifyService.tradeDeleted(trade.book_title);
+      setRedirect(true)
+    });
 
   const completeTrade = () => fetch(`/api/trades/${match.params.id}`, { method: 'PATCH' })
-    .then(() => setRedirect(true));
+    .then(() => {
+      notifyService.tradeCompleted(trade.book_title);
+      setRedirect(true);
+    });
 
   const TradeOptions = () => {
     return (

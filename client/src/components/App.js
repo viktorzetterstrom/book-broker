@@ -7,6 +7,7 @@ import { UserProvider } from '../contexts/UserContext';
 import { NavBar } from './basic-components';
 
 
+
 function App() {
   const [user, setUser] = useState(null);
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button, FlexContainerHorizontal } from './';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
+import StarRatingComponent from 'react-star-rating-component';
 
 const Heading = styled.h3`
   margin-top: 0;
@@ -70,7 +71,16 @@ export function TradeCard({
           <Details>Owner: <Link to={`/profiles/${owner_id}`}>{owner}</Link></Details>
           <Details>By: {book_author}</Details>
           <Details>Published: {book_publication_year}</Details>
-          <Details>Goodreads rating: {book_rating}</Details>
+          <Details>Goodreads rating:
+            <StarRatingComponent
+              name="goodreads_rating"
+              editing={false}
+              starCount={5}
+              value={book_rating}
+              starColor={'#df913d'}
+              emptyStarColor={'#bbb'}
+            />
+          </Details>
           <Details>Condition: {book_condition}</Details>
           {
             hideButton

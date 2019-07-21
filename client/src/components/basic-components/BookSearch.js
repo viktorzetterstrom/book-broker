@@ -16,7 +16,6 @@ export function BookSearch({setActiveBook}) {
     fetch('/api/books?' + query)
       .then(res => res.json())
       .then(data => setBooks(data));
-
   }
 
   const onChange = e => {
@@ -33,7 +32,7 @@ export function BookSearch({setActiveBook}) {
 
   return (
     <div>
-      <Form onChange={onChange} autoComplete="off">
+      <Form onChange={onChange} submitHandler={e => e.preventDefault()} autoComplete="off">
         <Label>Search<Input autocomplete="off" type='text' name='query' /></Label>
       </Form>
       <ul>

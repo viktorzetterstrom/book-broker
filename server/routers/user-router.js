@@ -20,13 +20,26 @@ router.get('/:id/trades', (req, res) => {
 
 router.post('/login',
   passport.authenticate('login'),
-  (req, res) => {
-    res.json({
+  (req, res, next) => {
+    return res.json({
       username: req.user.username,
       id: req.user.id,
       email: req.user.email
     });
-  });
+  },
+);
+
+// app.post('/login',
+//   passport.authenticate('local', { failWithError: true }),
+//   function(req, res, next) {
+//     // Handle success
+//     return res.send({ success: true, message: 'Logged in' })
+//   },
+//   function(err, req, res, next) {
+//     // Handle error
+//     return res.status(401).send({ success: false, message: err })
+//   }
+// )
 
 router.post('/logout', (req, res) => {
   req.logout();

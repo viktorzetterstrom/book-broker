@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import UserContext from '../../contexts/UserContext';
 import authService from '../../services/auth-service';
+import notifyService from '../../services/notify-service';
 
 const StyledNav = styled.nav`
   background-color: hotpink;
@@ -39,6 +40,7 @@ export function NavBar() {
               <Link to={`/profiles/${userContext.user.id}`}><StyledNavButton>Profile</StyledNavButton></Link>
               <Link to='/'><StyledNavButton onClick={() => {
                 authService.signout(() => {
+                  notifyService.logoutSuccess();
                   userContext.setUser(null);
                 });
               }}>Log out</StyledNavButton>

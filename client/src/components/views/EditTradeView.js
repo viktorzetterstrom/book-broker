@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button, FlexContainerVertical, TradeCard, Form, Input, Label, Spinner } from '../basic-components';
 import { Redirect } from 'react-router-dom';
+import notifyService from '../../services/notify-service';
 
 export const EditTradeView = ({ match }) => {
   const [redirect, setRedirect] = useState(false);
@@ -24,7 +25,10 @@ export const EditTradeView = ({ match }) => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ ...trade, trade_description, book_condition })
-    }).then(() => setRedirect(true));
+    }).then(() => {
+      notifyService.tradeUpdated(trade.book_title);
+      setRedirect(true);
+    });
   };
 
   return (
@@ -37,7 +41,13 @@ export const EditTradeView = ({ match }) => {
               <TradeCard hideButton {...trade} />
               <Form submitHandler={editTrade}>
                 <Label>Description<textarea name='description' defaultValue={trade.trade_description}></textarea></Label>
-                <Label>Condition<Input name='condition' type='number' max='5' min='1' defaultValue={trade.book_condition} /></Label>
+                <Label>Condition
+                  <select defaultValue={trade.book_condition} name='condition'>
+                    <option >Used</option>
+                    <option >Good</option>
+                    <option >Pristine</option>
+                  </select>
+                </Label>
                 <Button>Update Trade</Button>
               </Form>
             </>
