@@ -3,37 +3,53 @@ import { Button, FlexContainerHorizontal } from './';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
+import { Header } from './Header';
 
-const Heading = styled.h3`
+const Heading = styled.h2`
   margin-top: 0;
-  font-size: 14px;
+  font-size: 18px;
 `
 
-const Details = styled.p`
+const Details = styled.div`
   margin: 0;
   font-size: 12px;
 `
 
 const CardContainer = styled.div`
   width: 100%;
-  padding: 10px;
-  margin-top: 20px;
-  border-bottom: 1px solid black;
+  margin-bottom: 15px;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  transition: 0.2s ease-in-out;
+  :hover {
+    box-shadow: 0 0 5px 0px #0000004f;
+  }
 `
 
 const DetailsContainer = styled.div`
   width: 75%;
+  position: relative;
   padding: 10px;
 `
 
-const ImgContainer = styled.div`
-  margin-right: 10px;
-  margin-left: 10px;
-  width: 80px;
-`
+const ButtonContainer = styled.div`
+  width: 100%;
+  `;
 
 const Img = styled.img`
-  width: 100%;
+  height: 100%;
+  width: 110px;
+  margin-bottom: -3px;
+`
+
+const UserLink = styled.span`
+  > a {
+    font-weight: 700;
+    color: var(--tertiary-color-dark);
+    :hover {
+      text-decoration: underline;
+    }
+  }
 `
 
 export function TradeCard({
@@ -63,28 +79,31 @@ export function TradeCard({
   return (
     <CardContainer>
       <FlexContainerHorizontal>
-        <ImgContainer>
+        <div>
           <Img src={book_image} alt="book" />
-        </ImgContainer>
+        </div>
         <DetailsContainer>
           <Heading>{book_title}</Heading>
-          <Details>Owner: <Link to={`/profiles/${owner_id}`}>{owner}</Link></Details>
           <Details>By: {book_author}</Details>
           <Details>Published: {book_publication_year}</Details>
-          <Details>Goodreads rating: </Details>
-          <StarRatings
-            name="goodreads_rating"
-            numberOfStars={5}
-            rating={book_rating}
-            starRatedColor="#df913d"
-            starDimension="15px"
-            starSpacing="2px"
-          />
           <Details>Condition: {book_condition}</Details>
+          <Details>Owner: <UserLink><Link to={`/profiles/${owner_id}`}>{owner}</Link></UserLink></Details>
+          <Details>Rating:
+            <StarRatings
+              name="goodreads_rating"
+              numberOfStars={5}
+              rating={book_rating}
+              starRatedColor="#df913d"
+              starDimension="15px"
+              starSpacing="1px"
+            />
+          </Details>
           {
             hideButton
               ? <Details>Description: {trade_description}</Details>
-              : <Link to={`/trades/${id}`}><Button primary card onClick={onClick}>View more</Button></Link>
+              : <ButtonContainer>
+                <Link to={`/trades/${id}`}><Button primary card onClick={onClick}>View more</Button></Link>
+              </ButtonContainer>
           }
         </DetailsContainer>
       </FlexContainerHorizontal>

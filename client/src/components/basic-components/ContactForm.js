@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from 'react';
 import queryString from 'query-string';
-import { Form, Button } from './';
+import { Form, Button, InputContainer, Textarea, Label } from './';
 import UserContext from '../../contexts/UserContext';
 
 const createQueryString = (message, subject) => queryString.stringify({
@@ -24,7 +24,10 @@ export function ContactForm({ email, book_title }) {
   return userContext.user
     ? <Form action={`mailto:${email}?${query}`} method='post' enctype="text/plain" onChange={updateMessage}>
       <h3>Contact book owner</h3>
-      <textarea></textarea>
+      <InputContainer>
+        <Textarea></Textarea>
+        <Label>Message</Label>
+      </InputContainer>
       <Button primary>Contact</Button>
     </Form>
     : <></>;

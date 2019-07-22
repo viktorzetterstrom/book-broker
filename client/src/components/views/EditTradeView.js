@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FlexContainerVertical, TradeCard, Form, Input, Label, Spinner } from '../basic-components';
+import { Button, FlexContainerVertical, TradeCard, Form, ConditionSelect, Label, Spinner, InputContainer, Textarea } from '../basic-components';
 import { Redirect } from 'react-router-dom';
 import notifyService from '../../services/notify-service';
 
@@ -40,14 +40,11 @@ export const EditTradeView = ({ match }) => {
             <>
               <TradeCard hideButton {...trade} />
               <Form submitHandler={editTrade}>
-                <Label>Description<textarea name='description' defaultValue={trade.trade_description}></textarea></Label>
-                <Label>Condition
-                  <select defaultValue={trade.book_condition} name='condition'>
-                    <option >Used</option>
-                    <option >Good</option>
-                    <option >Pristine</option>
-                  </select>
-                </Label>
+                <InputContainer>
+                  <Textarea name='description' defaultValue={trade.trade_description}></Textarea>
+                  <Label>Description</Label>
+                </InputContainer>
+                <ConditionSelect />
                 <Button primary>Update Trade</Button>
               </Form>
             </>

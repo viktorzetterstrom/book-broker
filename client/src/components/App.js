@@ -23,7 +23,7 @@ function App() {
             <Route exact path='/trades' component={ShowTradesView} />
             <Route exact path='/profiles/:id' component={ProfileView} />
             <Switch>
-              <PrivateRoute exact path='/trades/add' component={AddTradeView} />
+              <Route exact path='/trades/add' component={AddTradeView} />
               <Route exact path='/trades/:id/edit' component={EditTradeView} />
               <Route exact path='/trades/:id' component={ShowTradeView} />
             </Switch>

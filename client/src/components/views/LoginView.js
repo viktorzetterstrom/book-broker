@@ -1,12 +1,16 @@
 import React from 'react';
 import { Login } from '../authentication';
 import { Link } from 'react-router-dom';
-import { Button, Header, FlexContainerVertical, Or } from '../basic-components';
+import { HeaderTitle, HeaderText, Button, Header, FlexContainerVertical, Or } from '../basic-components';
 
 export function LoginView() {
   return (
     <div>
-      <Header />
+      <Header>
+        <HeaderTitle>Bookbroker</HeaderTitle>
+        <HeaderText>BookBroker is an app for trading your old books for new ones.</HeaderText>
+        <Link to="/trades"><Button primary>Browse</Button></Link>
+      </Header>
       <FlexContainerVertical>
         <Login />
         <Or />

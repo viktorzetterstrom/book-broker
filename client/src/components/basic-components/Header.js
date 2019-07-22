@@ -14,25 +14,23 @@ const StyledHeader = styled.header`
   box-shadow: 0 0 10px black;
   `
 
-const StyledH1 = styled.h1`
+export const HeaderTitle = styled.h1`
   font-size: 40px;
   text-align: center;
   color: var(--gray-dark);
   margin-bottom: 5px;
 `
 
-const StyledP = styled.p`
+export const HeaderText = styled.p`
   text-align: center;
   color: var(--gray-dark);
 `
 
-export function Header() {
+export function Header({ children }) {
   return (
     <StyledHeader>
       <FlexContainerVertical>
-        <StyledH1>Bookbroker</StyledH1>
-        <StyledP>BookBroker is an app for trading your old books for new ones.</StyledP>
-        <Link to="/trades"><Button primary>Browse</Button></Link>
+        {children}
       </FlexContainerVertical>
     </StyledHeader>
   );

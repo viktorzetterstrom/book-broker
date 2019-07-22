@@ -30,6 +30,22 @@ export const Input = styled.input`
   }
 `
 
+export const Textarea = styled.textarea`
+  resize: none;
+  width: 300px;
+  font-size: 12px;
+  padding: 1em;
+  margin: 0.5em;
+  background: var(--gray-light);
+  border: 1px solid lightgrey;
+  :focus {
+    outline-color: var(--secondary-color);
+  }
+  :focus + label {
+    background-color: var(--secondary-color);
+  }
+`
+
 export const Label = styled.label`
   background: var(--gray-light);
   color: var(--gray-dark);
@@ -50,3 +66,28 @@ export function Form(props) {
     </StyledForm>
   )
 }
+
+const SelectLabel = styled.label`
+  font-size: 12px;
+  margin-right: 10px;
+`
+
+const StyledSelect = styled.select`
+  font-size: 12px;
+
+  :focus {
+    outline-color: var(--secondary-color);
+  }
+`
+
+export function ConditionSelect() {
+  return <div>
+    <SelectLabel>Condition:</SelectLabel>
+    <StyledSelect defaultValue="Good" name="condition">
+      <option>Used</option>
+      <option>Good</option>
+      <option>Pristine</option>
+    </StyledSelect>
+  </div>
+}
+

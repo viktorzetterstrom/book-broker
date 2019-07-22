@@ -31,11 +31,11 @@ export function Login({ from = '/trades' }) {
     <Form submitHandler={login}>
       <InputContainer>
         <Input id="username" name="username" type="text" />
-        <Label for="username">Username</Label>
+        <Label htmlFor="username">Username</Label>
       </InputContainer>
       <InputContainer>
         <Input id="password" name="password" type="password" />
-        <Label for="password">Password</Label>
+        <Label htmlFor="password">Password</Label>
       </InputContainer>
       <Button primary>Log in</Button>
     </Form>

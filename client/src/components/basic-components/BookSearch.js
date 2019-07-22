@@ -1,13 +1,18 @@
 import React, { useState } from 'react';
 import queryString from 'query-string';
-import {BookCard, Form, Input, Label, Spinner } from '.';
+import { BookCard, Form, Input, Label, Spinner, InputContainer } from '.';
 import styled from 'styled-components';
 
 const StyledLi = styled.li`
   list-style: none;
 `
 
-export function BookSearch({setActiveBook}) {
+const MarginBottomDiv = styled.div`
+  margin-bottom: 20px;
+`
+
+
+export function BookSearch({ setActiveBook }) {
   const [books, setBooks] = useState(null);
   const [loading, setLoading] = useState(false);
   const [timer, setTimer] = useState(null);
@@ -32,9 +37,14 @@ export function BookSearch({setActiveBook}) {
 
   return (
     <div>
-      <Form onChange={onChange} submitHandler={e => e.preventDefault()} autoComplete="off">
-        <Label>Search<Input autocomplete="off" type='text' name='query' /></Label>
-      </Form>
+      <MarginBottomDiv>
+        <Form onChange={onChange} submitHandler={e => e.preventDefault()} autoComplete="off">
+          <InputContainer>
+            <Input autocomplete="off" type="text" name="query" id="query" />
+            <Label htmlFor="query">Search</Label>
+          </InputContainer>
+        </Form>
+      </MarginBottomDiv>
       <ul>
         {books ? books.map((book, i) => (
           <StyledLi key={i}>
@@ -42,12 +52,12 @@ export function BookSearch({setActiveBook}) {
           </StyledLi>
         )
         ) : <></>}
-        {
-          loading
-            ? <Spinner />
-            : <></>
-        }
       </ul>
+      {
+        loading
+          ? <Spinner />
+          : <></>
+      }
     </div>
   );
 }

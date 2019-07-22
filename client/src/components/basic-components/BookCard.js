@@ -2,9 +2,9 @@ import React from 'react';
 import { Button, FlexContainerHorizontal } from './';
 import styled from 'styled-components';
 
-const Heading = styled.h3`
+const Heading = styled.h2`
   margin-top: 0;
-  font-size: 14px;
+  font-size: 18px;
 `
 
 const Details = styled.p`
@@ -13,17 +13,23 @@ const Details = styled.p`
 `
 
 const CardContainer = styled.div`
-  padding: 10px;
-  margin-top: 20px;
+  margin-bottom: 15px;
+  border-top: 1px solid lightgrey;
+  border-bottom: 1px solid lightgrey;
+  transition: 0.2s ease-in-out;
+  :hover {
+    box-shadow: 0 0 5px 0px #0000004f;
+  }
 `
 
 const DetailsContainer = styled.div`
-  width: 75%;
   padding: 10px;
 `
 
 const Img = styled.img`
-  width: 100%;
+  height: 100%;
+  width: 110px;
+  margin-bottom: -3px;
 `
 
 export function BookCard({ hideButton, book, clickHandler }) {
@@ -40,7 +46,7 @@ export function BookCard({ hideButton, book, clickHandler }) {
           {
             hideButton
               ? <></>
-              : <Button card onClick={() => clickHandler(book)}>Add book</Button>
+              : <Button primary card onClick={() => clickHandler(book)}>Add book</Button>
           }
         </DetailsContainer>
       </FlexContainerHorizontal>

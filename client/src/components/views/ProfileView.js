@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { FlexContainerVertical, TradeCard, Spinner } from '../basic-components';
+import { FlexContainerVertical, TradeCard, Spinner, Header, HeaderTitle } from '../basic-components';
 import UserContext from '../../contexts/UserContext';
 
 export function ProfileView({ match }) {
@@ -21,43 +21,38 @@ export function ProfileView({ match }) {
 
   return (
     <>
-      <FlexContainerVertical>
-        <div>
-          {
-            userContext.user && user
-              ? <h1>Hello {user.username}</h1>
-              : <h1>{user.username}</h1>
-          }
-        </div>
+      <Header>
         {
-          trades.loading
-            ? <Spinner />
-            : <>
-              <h2>Active</h2>
-              {
-                trades
-                  .filter(trade => trade.trade_status === false)
-                  .map((trade, i) => <TradeCard key={i} {...trade} />)
-              }
-
-              {
-                userContext.user && user.id === userContext.user.id
-                  ? <>
-                    <h2>Completed</h2>
-                    {
-                      trades
-                        .filter(trade => trade.trade_status === true)
-                        .map((trade, i) => <TradeCard key={i} {...trade} />)
-                    }
-                  </>
-                  : <></>
-              }
-              {
-
-              }
-            </>
+          userContext.user && user
+            ? <HeaderTitle>Hello {user.username}</HeaderTitle>
+            : <HeaderTitle>{user.username}</HeaderTitle>
         }
-      </FlexContainerVertical>
+      </Header>
+      {
+        trades.loading
+          ? <Spinner />
+          : <FlexContainerVertical>
+            <h2>Active</h2>
+            {
+              trades
+                .filter(trade => trade.trade_status === false)
+                .map((trade, i) => <TradeCard key={i} {...trade} />)
+            }
+
+            {
+              userContext.user && user.id === userContext.user.id
+                ? <>
+                  <h2>Completed</h2>
+                  {
+                    trades
+                      .filter(trade => trade.trade_status === true)
+                      .map((trade, i) => <TradeCard key={i} {...trade} />)
+                  }
+                </>
+                : <></>
+            }
+          </FlexContainerVertical>
+      }
     </>
   );
 }

@@ -34,15 +34,15 @@ export function Register(props) {
       <Form submitHandler={register}>
         <InputContainer>
           <Input id="username" name="username" type="text" required />
-          <Label for="username">Username</Label>
+          <Label htmlFor="username">Username</Label>
         </InputContainer>
         <InputContainer>
           <Input id="email" name="email" type="email" required />
-          <Label for="email">Email</Label>
+          <Label htmlFor="email">Email</Label>
         </InputContainer>
         <InputContainer>
           <Input id="password" name="password" type="password" required />
-          <Label for="password">Password</Label>
+          <Label htmlFor="password">Password</Label>
         </InputContainer>
         <Button primary>Register</Button>
       </Form>
