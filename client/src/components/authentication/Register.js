@@ -35,7 +35,7 @@ export function Register(props) {
         <Label>Username<Input name="username" type="text" required /></Label>
         <Label>Email<Input name="email" type="email" required /></Label>
         <Label>Password<Input name="password" type="password" required /></Label>
-        <Button>Register</Button>
+        <Button primary>Register</Button>
       </Form>
     </div>
   );

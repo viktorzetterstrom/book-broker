@@ -2,9 +2,12 @@ import React from 'react';
 import styled from 'styled-components';
 
 const StyledButton = styled.button`
-  background-color: grey;
-  color: white;
-  border: 1px solid grey;
+  background-color: var(${ props => {
+    if (props.primary) return '--primary-color';
+    if (props.secondary) return '--secondary-color';
+    if (props.tertiary) return '--tertiary-color';
+  }});
+  color: var(--gray-dark);
   border-radius: 3px;
   padding: 8px 12px;
   margin-top: 5px;
@@ -12,8 +15,16 @@ const StyledButton = styled.button`
   transition: 0.3s;
   outline: none;
   :hover {
-    background-color: white;
-    color: grey;
+    background-color: var(${ props => {
+    if (props.primary) return '--primary-color-dark';
+    if (props.secondary) return '--secondary-color-dark';
+    if (props.tertiary) return '--tertiary-color-dark';
+  }});
+  color: var(${ props => {
+    if (props.primary) return '--gray-dark';
+    if (props.secondary) return '--gray-light';
+    if (props.tertiary) return '--gray-light';
+  }});
     cursor: pointer;
   }
   :active {
@@ -22,5 +33,5 @@ const StyledButton = styled.button`
 `
 
 export function Button(props) {
-  return <StyledButton {...props} onClick={props.onClick}>{props.children}</StyledButton>
+  return <StyledButton {...props}>{props.children}</StyledButton>
 }

@@ -5,6 +5,10 @@ const StyledForm = styled.form`
   display: flex;
   flex-direction: column;
   align-items: ${props => props.alignRight ? 'flex-end' : 'center'};
+
+  button {
+    margin-top: 20px;
+  }
 `
 
 export const Input = styled.input`
@@ -13,6 +17,9 @@ export const Input = styled.input`
   background: lightgrey;
   border: none;
   border-radius: 3px;
+  :focus {
+    outline-color: var(--secondary-color);
+  }
 `
 
 export const Label = styled.label`

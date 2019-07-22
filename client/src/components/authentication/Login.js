@@ -31,7 +31,7 @@ export function Login({ from = '/trades' }) {
     <Form submitHandler={login}>
       <Label>Username<Input name="username" type="text" /></Label>
       <Label>Password<Input name="password" type="password" /></Label>
-      <Button>Log in</Button>
+      <Button primary>Log in</Button>
     </Form>
   );
 };

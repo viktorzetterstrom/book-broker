@@ -84,7 +84,7 @@ export function TradeCard({
           {
             hideButton
               ? <Details>Description: {trade_description}</Details>
-              : <Link to={`/trades/${id}`}><Button card onClick={onClick}>View more</Button></Link>
+              : <Link to={`/trades/${id}`}><Button primary card onClick={onClick}>View more</Button></Link>
           }
         </DetailsContainer>
       </FlexContainerHorizontal>

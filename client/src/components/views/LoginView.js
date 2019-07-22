@@ -10,7 +10,7 @@ export function LoginView() {
       <FlexContainerVertical>
         <Login />
         <Or />
-        <Link to="/register"><Button>Register</Button></Link>
+        <Link to="/register"><Button secondary>Register</Button></Link>
       </FlexContainerVertical>
     </div>
   );

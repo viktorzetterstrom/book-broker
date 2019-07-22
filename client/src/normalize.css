@@ -369,3 +369,16 @@ h1, h2, h3, h4, h5, h6 {
 body {
   font-family: 'Open Sans', 'sans-serif';
 }
+
+:root {
+  --primary-color: #b0e0d3;
+  --secondary-color: #dfc5af;
+  --tertiary-color: #dfafb7;
+
+  --primary-color-dark: #2ae3a2;
+  --secondary-color-dark: #e07529;
+  --tertiary-color-dark: #e02948;
+
+  --gray-dark: rgb(44, 44, 44);
+  --gray-light: rgb(241, 241, 241);
+}

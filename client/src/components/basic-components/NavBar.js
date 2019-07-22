@@ -6,23 +6,29 @@ import authService from '../../services/auth-service';
 import notifyService from '../../services/notify-service';
 
 const StyledNav = styled.nav`
-  background-color: hotpink;
   display: flex;
   justify-content: space-evenly;
   > a {
     width: 100%;
     text-align: center;
-  }
+  };
+  > a div {
+    border-right: 2px solid #2ae3a252;
+  };
+  > a:last-child div {
+    border-right: none;
+  };
+  box-shadow: 0 0 4px #000000ba;
 `;
 
 const StyledNavButton = styled.div`
   padding: 10px;
-  background-color: darkgray;
-  color: black;
+  background-color: var(--primary-color);
+  color: var(--gray-dark);
   transition: 0.3s;
   cursor: pointer;
   :hover {
-    background-color: lightgray;
+    background-color: var(--primary-color-dark);
   }
 `;
 

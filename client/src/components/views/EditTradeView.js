@@ -48,7 +48,7 @@ export const EditTradeView = ({ match }) => {
                     <option >Pristine</option>
                   </select>
                 </Label>
-                <Button>Update Trade</Button>
+                <Button primary>Update Trade</Button>
               </Form>
             </>
           )

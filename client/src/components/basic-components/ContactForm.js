@@ -25,7 +25,7 @@ export function ContactForm({ email, book_title }) {
     ? <Form action={`mailto:${email}?${query}`} method='post' enctype="text/plain" onChange={updateMessage}>
       <h3>Contact book owner</h3>
       <textarea></textarea>
-      <Button>Contact</Button>
+      <Button primary>Contact</Button>
     </Form>
     : <></>;
 }

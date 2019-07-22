@@ -25,9 +25,9 @@ export function ShowTradeView({ match }) {
   const TradeOptions = () => {
     return (
       <div>
-        <Link to={`/trades/${match.params.id}/edit`}><Button>Edit</Button></Link>
-        <Button onClick={deleteTrade}>Delete</Button>
-        <Button onClick={completeTrade}>Complete</Button>
+        <Link to={`/trades/${match.params.id}/edit`}><Button primary>Edit</Button></Link>
+        <Button onClick={deleteTrade} tertiary>Delete</Button>
+        <Button onClick={completeTrade} secondary>Complete</Button>
       </div>
     );
   }
