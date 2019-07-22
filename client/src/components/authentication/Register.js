@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import authService from '../../services/auth-service';
 import UserContext from '../../contexts/UserContext';
 import { Redirect } from 'react-router-dom';
-import { Button, Form, Input, Label } from '../basic-components';
+import { InputContainer, Button, Form, Input, Label } from '../basic-components';
 import notifyService from '../../services/notify-service';
 
 export function Register(props) {
@@ -31,10 +31,19 @@ export function Register(props) {
   if (redirectToReferrer === true) return <Redirect to="/trades" />;
   return (
     <div>
-      <Form alignRight submitHandler={register}>
-        <Label>Username<Input name="username" type="text" required /></Label>
-        <Label>Email<Input name="email" type="email" required /></Label>
-        <Label>Password<Input name="password" type="password" required /></Label>
+      <Form submitHandler={register}>
+        <InputContainer>
+          <Input id="username" name="username" type="text" required />
+          <Label for="username">Username</Label>
+        </InputContainer>
+        <InputContainer>
+          <Input id="email" name="email" type="email" required />
+          <Label for="email">Email</Label>
+        </InputContainer>
+        <InputContainer>
+          <Input id="password" name="password" type="password" required />
+          <Label for="password">Password</Label>
+        </InputContainer>
         <Button primary>Register</Button>
       </Form>
     </div>

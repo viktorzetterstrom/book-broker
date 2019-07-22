@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import UserContext from '../../contexts/UserContext';
 import { Redirect } from 'react-router-dom';
 import authService from '../../services/auth-service';
-import { Button, Form, Input, Label } from '../basic-components';
+import { InputContainer, Button, Form, Input, Label } from '../basic-components';
 import notifyService from '../../services/notify-service';
 
 
@@ -29,8 +29,14 @@ export function Login({ from = '/trades' }) {
     return <Redirect to={from} />;
   } else return (
     <Form submitHandler={login}>
-      <Label>Username<Input name="username" type="text" /></Label>
-      <Label>Password<Input name="password" type="password" /></Label>
+      <InputContainer>
+        <Input id="username" name="username" type="text" />
+        <Label for="username">Username</Label>
+      </InputContainer>
+      <InputContainer>
+        <Input id="password" name="password" type="password" />
+        <Label for="password">Password</Label>
+      </InputContainer>
       <Button primary>Log in</Button>
     </Form>
   );

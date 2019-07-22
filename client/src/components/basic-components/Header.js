@@ -22,6 +22,7 @@ const StyledH1 = styled.h1`
 `
 
 const StyledP = styled.p`
+  text-align: center;
   color: var(--gray-dark);
 `
 
@@ -30,7 +31,7 @@ export function Header() {
     <StyledHeader>
       <FlexContainerVertical>
         <StyledH1>Bookbroker</StyledH1>
-        <StyledP>Yada yada yada, lodum fbdjfjhd jbdf</StyledP>
+        <StyledP>BookBroker is an app for trading your old books for new ones.</StyledP>
         <Link to="/trades"><Button primary>Browse</Button></Link>
       </FlexContainerVertical>
     </StyledHeader>

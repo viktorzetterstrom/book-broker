@@ -1,6 +1,6 @@
 import PNotify from 'pnotify/dist/es/PNotify';
 import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
-PNotify.defaults.styling = 'material';
+// PNotify.defaults.styling = 'material';
 PNotify.defaults.icons = 'material';
 
 const stackBottomModal = {
@@ -18,7 +18,8 @@ const registerSuccess = () => PNotify.success({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'primary-notification'
 });
 
 const registerFailure = () => PNotify.error({
@@ -28,7 +29,8 @@ const registerFailure = () => PNotify.error({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'secondary-notification'
 });
 
 const loginSuccess = username => PNotify.success({
@@ -38,7 +40,8 @@ const loginSuccess = username => PNotify.success({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'primary-notification'
 });
 
 const logoutSuccess = () => PNotify.info({
@@ -48,7 +51,8 @@ const logoutSuccess = () => PNotify.info({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'secondary-notification'
 });
 
 const loginFailure = () => PNotify.error({
@@ -58,7 +62,8 @@ const loginFailure = () => PNotify.error({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'secondary-notification'
 });
 
 const tradeCreated = (bookname) => PNotify.success({
@@ -68,7 +73,8 @@ const tradeCreated = (bookname) => PNotify.success({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'primary-notification'
 });
 
 const tradeCompleted = (bookname) => PNotify.success({
@@ -78,7 +84,8 @@ const tradeCompleted = (bookname) => PNotify.success({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'primary-notification'
 });
 
 const tradeUpdated = (bookname) => PNotify.info({
@@ -88,7 +95,8 @@ const tradeUpdated = (bookname) => PNotify.info({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'tertiary-notification'
 });
 
 const tradeDeleted = (bookname) => PNotify.info({
@@ -98,7 +106,8 @@ const tradeDeleted = (bookname) => PNotify.info({
   width: 300,
   animation: 'fade',
   mouseReset: false,
-  stack: stackBottomModal
+  stack: stackBottomModal,
+  addClass: 'secondary-notification'
 });
 
 const notifyService = {
