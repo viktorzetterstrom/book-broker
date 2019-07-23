@@ -10,3 +10,5 @@ export * from './NavBar';
 export * from './ContactForm';
 export * from './BookSearch';
 export * from './Or';
+export * from './Chat';
+export * from './Messages';

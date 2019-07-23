@@ -1,6 +1,6 @@
+DROP TABLE IF EXISTS "message";
 DROP TABLE IF EXISTS "trade";
 DROP TABLE IF EXISTS "user";
-
 
 CREATE TABLE "user" (
   id SERIAL PRIMARY KEY,
@@ -23,4 +23,14 @@ CREATE TABLE "trade" (
   owner_id INTEGER,
   trade_status BOOLEAN DEFAULT false,
   FOREIGN KEY (owner_id) REFERENCES "user"(id)
+);
+
+CREATE TABLE "message" (
+  id SERIAL PRIMARY KEY,
+  message VARCHAR,
+  trade_id INTEGER,
+  user_id INTEGER,
+  timestamp timestamp default current_timestamp,
+  FOREIGN KEY (trade_id) REFERENCES "trade"(id),
+  FOREIGN KEY (user_id) REFERENCES "user"(id)
 );

@@ -20,7 +20,7 @@ const getAll = cb => {
 };
 
 const getById = (id, cb) => {
-  pool.query('SELECT "trade".*, "user".email FROM "trade" INNER JOIN "user" ON "user".id = "trade".owner_id WHERE "trade".id = $1',
+  pool.query('SELECT "trade".*, "user".username, "user".email FROM "trade" INNER JOIN "user" ON "user".id = "trade".owner_id WHERE "trade".id = $1',
     [id],
     (error, result) => {
       if (error) return cb(error);

@@ -61,6 +61,7 @@ export function TradeCard({
   book_publication_year,
   book_rating,
   book_image,
+  trade_status,
   trade_description,
   book_condition,
   owner_id,
@@ -88,6 +89,7 @@ export function TradeCard({
           <Details>Published: {book_publication_year}</Details>
           <Details>Condition: {book_condition}</Details>
           <Details>Owner: <UserLink><Link to={`/profiles/${owner_id}`}>{owner}</Link></UserLink></Details>
+          <Details>Status: { trade_status ? 'Completed' : 'Available' }</Details>
           <Details>Rating:
             <StarRatings
               name="goodreads_rating"

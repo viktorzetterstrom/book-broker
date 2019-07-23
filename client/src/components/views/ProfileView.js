@@ -23,7 +23,7 @@ export function ProfileView({ match }) {
     <>
       <Header>
         {
-          userContext.user && user
+          userContext.user && userContext.user.username === user.username
             ? <HeaderTitle>Hello {user.username}</HeaderTitle>
             : <HeaderTitle>{user.username}</HeaderTitle>
         }

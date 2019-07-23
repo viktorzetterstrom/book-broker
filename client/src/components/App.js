@@ -4,8 +4,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import { PrivateRoute } from './authentication';
 import { RegisterView, LoginView, AddTradeView, ShowTradesView, ShowTradeView, EditTradeView, ProfileView } from './views';
 import { UserProvider } from '../contexts/UserContext';
-import { NavBar } from './basic-components';
-
+import { NavBar, Chat } from './basic-components';
 
 
 function App() {

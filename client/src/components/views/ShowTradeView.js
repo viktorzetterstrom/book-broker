@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { FlexContainerVertical, TradeCard, Spinner, ContactForm, Button } from '../basic-components';
+import { FlexContainerVertical, TradeCard, Spinner, ContactForm, Button, Chat } from '../basic-components';
 import UserContext from '../../contexts/UserContext';
 import { Redirect, Link } from 'react-router-dom';
 import notifyService from '../../services/notify-service';
@@ -25,9 +25,9 @@ export function ShowTradeView({ match }) {
   const TradeOptions = () => {
     return (
       <div>
-        <Link to={`/trades/${match.params.id}/edit`}><Button primary>Edit</Button></Link>
-        <Button onClick={deleteTrade} tertiary>Delete</Button>
-        <Button onClick={completeTrade} secondary>Complete</Button>
+        <Link to={`/trades/${match.params.id}/edit`}><Button card primary>Edit</Button></Link>
+        <Button card onClick={deleteTrade} tertiary>Delete</Button>
+        <Button card onClick={completeTrade} secondary>Complete</Button>
       </div>
     );
   }
@@ -51,7 +51,13 @@ export function ShowTradeView({ match }) {
           trade.loading ? <Spinner />
             : <>
               <TradeCard {...trade} hideButton />
-              {ownerUserAlternatives()}
+              {!trade.trade_status
+                ? ownerUserAlternatives()
+                : <></>
+              }
+              {userContext.user
+                ? <Chat tradeId={match.params.id} ownerName={trade.username} userId={userContext.user.id} />
+                : <></>}
             </>
         }
       </FlexContainerVertical>

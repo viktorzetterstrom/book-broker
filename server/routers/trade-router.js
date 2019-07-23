@@ -49,4 +49,19 @@ router.post('/', async (req, res) => {
   });
 });
 
+router.post('/:id/messages', (req, res) => {
+  const { message, userId } = req.body;
+  db.message.add(message, req.params.id, userId, (err) => {
+    if (err) return res.status(204).json('error');
+    res.status(200).json(true);
+  });
+});
+
+router.get('/:id/messages', (req, res) => {
+  db.message.getByTradeId(req.params.id, (err, allMessages) => {
+    if (err) return res.status(204).json('error');
+    res.status(200).json(allMessages);
+  });
+});
+
 module.exports = router;

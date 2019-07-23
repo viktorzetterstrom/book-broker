@@ -11,6 +11,7 @@ const tradeRouter = require('./routers/trade-router');
 
 const app = express();
 
+
 app.use(session({
   secret: 'we\'re not gonna test it',
   saveUninitialized: true,

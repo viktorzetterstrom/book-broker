@@ -386,6 +386,7 @@ body {
 .primary-notification {
   background-color: var(--primary-color) !important;
   border-radius: 3px !important;
+  position: absolute !important;
 }
 
 .secondary-notification {
