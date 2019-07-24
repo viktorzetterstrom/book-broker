@@ -30,14 +30,15 @@ export function ShowTradesView() {
       </Header>
 
       {
-        trades.loading ? <Spinner />
+        trades.loading
+          ? <Spinner />
           : <FlexContainerVertical>
             {
               trades
                 .filter(trade => trade.trade_status === false)
                 .filter(trade => userContext.user ? trade.owner_id !== userContext.user.id : true)
                 .map(trade => {
-                  if (userContext.user && pinned.find((pin) => pin.id === trade.id)) {
+                  if (userContext.user && !pinned.loading && pinned.find((pin) => pin.id === trade.id)) {
                     trade.pinned = true;
                   } else trade.pinned = false;
                   return trade;

@@ -1,7 +1,13 @@
 import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
+import { Star } from './Star';
 
+const PinContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 30px;;
+`
 
 
 export const Pin = ({ tradeId, isPinned }) => {
@@ -28,9 +34,8 @@ export const Pin = ({ tradeId, isPinned }) => {
   };
 
   return (
-    <div>
-      <label htmlFor={`pin-${tradeId}`}>Pin:</label>
-      <input defaultChecked={isPinned} onChange={pinTrade} id={`pin-${tradeId}`} type="checkbox" />
-    </div>
+    <PinContainer>
+      <Star defaultChecked={isPinned} onChange={pinTrade} id={`pin-${tradeId}`} type="checkbox" />
+    </PinContainer>
   )
 }

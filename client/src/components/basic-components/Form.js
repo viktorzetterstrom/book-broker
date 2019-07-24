@@ -17,6 +17,8 @@ export const InputContainer = styled.div`
 
 export const Input = styled.input`
   width: 200px;
+  font-size: 18px;
+  height: 23px;
   padding: 0.5em;
   margin: 0.5em;
   background: var(--gray-light);

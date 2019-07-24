@@ -93,7 +93,7 @@ export function TradeCard({
           <Details>Condition: {book_condition}</Details>
           <Details>Owner: <UserLink><Link to={`/profiles/${owner_id}`}>{owner}</Link></UserLink></Details>
           <Details>Status: { trade_status ? 'Completed' : 'Available' }</Details>
-          <Details>Rating:
+          <Details>Goodreads Rating:
             <StarRatings
               name="goodreads_rating"
               numberOfStars={5}
