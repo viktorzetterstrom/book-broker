@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import { PrivateRoute } from './authentication';
@@ -9,6 +9,14 @@ import { NavBar, Chat } from './basic-components';
 
 function App() {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    fetch('/api/users/loggedin')
+      .then(res => res.json())
+      .then(json => {
+        if (json.loggedIn) setUser(json);
+      });
+  }, []);
 
   return (
     <UserProvider value={{ user, setUser }}>

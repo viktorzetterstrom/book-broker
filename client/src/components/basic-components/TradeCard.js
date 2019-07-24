@@ -1,9 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Button, FlexContainerHorizontal } from './';
+import React, { useState, useEffect, useContext } from 'react';
+import { Button, FlexContainerHorizontal, Pin } from './';
 import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
-import { Header } from './Header';
 
 const Heading = styled.h2`
   margin-top: 0;
@@ -66,7 +65,9 @@ export function TradeCard({
   book_condition,
   owner_id,
   onClick,
-  hideButton
+  hideButton,
+  pinned,
+  loggedIn
 }) {
 
   const [owner, setOwner] = useState('');
@@ -77,12 +78,14 @@ export function TradeCard({
       .then(user => setOwner(user.username));
   }, [owner_id]);
 
+
   return (
     <CardContainer>
       <FlexContainerHorizontal>
         <div>
           <Img src={book_image} alt="book" />
         </div>
+
         <DetailsContainer>
           <Heading>{book_title}</Heading>
           <Details>By: {book_author}</Details>
@@ -100,6 +103,11 @@ export function TradeCard({
               starSpacing="1px"
             />
           </Details>
+          {
+            loggedIn && loggedIn !== owner_id
+              ? <Pin tradeId={id} isPinned={pinned}/>
+              : <></>
+          }
           {
             hideButton
               ? <Details>Description: {trade_description}</Details>

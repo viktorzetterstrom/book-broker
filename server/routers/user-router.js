@@ -4,6 +4,21 @@ const db = require('../db');
 const router = express.Router();
 const passport = require('passport');
 
+router.get('/loggedin', (req, res) => {
+  if (req.isAuthenticated()) {
+    return res.json({
+      username: req.user.username,
+      id: req.user.id,
+      email: req.user.email,
+      loggedIn: true
+    });
+  } else {
+    return res.json({
+      loggedIn: false
+    });
+  }
+});
+
 router.get('/:id', (req, res) => {
   db.user.getById(req.params.id, (err, user) => {
     if (err) return res.status(404).json('');
@@ -20,7 +35,7 @@ router.get('/:id/trades', (req, res) => {
 
 router.post('/login',
   passport.authenticate('login'),
-  (req, res, next) => {
+  (req, res) => {
     return res.json({
       username: req.user.username,
       id: req.user.id,
@@ -28,18 +43,6 @@ router.post('/login',
     });
   },
 );
-
-// app.post('/login',
-//   passport.authenticate('local', { failWithError: true }),
-//   function(req, res, next) {
-//     // Handle success
-//     return res.send({ success: true, message: 'Logged in' })
-//   },
-//   function(err, req, res, next) {
-//     // Handle error
-//     return res.status(401).send({ success: false, message: err })
-//   }
-// )
 
 router.post('/logout', (req, res) => {
   req.logout();
@@ -52,11 +55,40 @@ router.post('/register', (req, res) => {
 
   bcrypt.hash(password, saltRounds, (err, hash) => {
     db.user.add(username, email, hash, (error) => {
-      if(error) {
+      if (error) {
         return res.status(409).json(false);
       }
       res.status(201).json(true);
     });
+  });
+});
+
+router.post('/:id/pinned', (req, res) => {
+  const userId = req.params.id;
+  const { tradeId } = req.body;
+  db.user.addPinnedTrade(tradeId, userId, (error) => {
+    if (error) {
+      return res.status(409).json(false);
+    }
+    res.status(201).json(true);
+  });
+});
+
+router.get('/:id/pinned', (req, res) => {
+  db.user.getPinnedTrades(req.params.id, (error, trades) => {
+    if (error) {
+      return res.status(409).json(error);
+    }
+    res.status(200).json(trades);
+  });
+});
+
+router.delete('/:id/pinned', (req, res) => {
+  const userId = req.params.id;
+  const { tradeId } = req.body;
+  db.user.deletePinnedTradeById(tradeId, userId, (error) => {
+    if (error) return res.status(204).json(false);
+    res.status(204).json(true);
   });
 });
 

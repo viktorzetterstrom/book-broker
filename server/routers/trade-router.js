@@ -18,14 +18,10 @@ router.get('/:id', (req, res) => {
 
 router.put('/:id', (req, res) => {
   const { trade_description, book_condition, owner_id } = req.body;
-  // if (req.user.id === ownerId) {
   db.trade.updateById(trade_description, book_condition, owner_id, req.params.id, (err, success) => {
     if (err) return res.status(204).json(false);
     res.status(204).json(success);
   });
-  // } else {
-  // return res.status(401).json(false);
-  // }
 });
 
 router.delete('/:id', (req, res) => {

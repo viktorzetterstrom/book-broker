@@ -36,7 +36,7 @@ export function ProfileView({ match }) {
             {
               trades
                 .filter(trade => trade.trade_status === false)
-                .map((trade, i) => <TradeCard key={i} {...trade} />)
+                .map((trade, i) => <TradeCard key={i} {...trade} loggedIn={userContext.user ? userContext.user.id : false} />)
             }
 
             {
@@ -46,7 +46,7 @@ export function ProfileView({ match }) {
                   {
                     trades
                       .filter(trade => trade.trade_status === true)
-                      .map((trade, i) => <TradeCard key={i} {...trade} />)
+                      .map((trade, i) => <TradeCard key={i} {...trade} loggedIn={userContext.user ? userContext.user.id : false} />)
                   }
                 </>
                 : <></>

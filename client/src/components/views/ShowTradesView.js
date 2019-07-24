@@ -4,6 +4,7 @@ import UserContext from '../../contexts/UserContext';
 
 export function ShowTradesView() {
   const [trades, setTrades] = useState({ loading: true });
+  const [pinned, setPinned] = useState({loading: true});
   const userContext = useContext(UserContext);
 
   useEffect(() => {
@@ -11,6 +12,15 @@ export function ShowTradesView() {
       .then(result => result.json())
       .then(json => setTimeout(() => setTrades(json), 800));
   }, []);
+
+  useEffect(() => {
+    if (userContext.user) {
+      fetch(`/api/users/${userContext.user.id}/pinned`)
+        .then(result => result.json())
+        .then(json => {console.log(json); return json})
+        .then(json => setPinned(json));
+    }
+  }, [userContext]);
 
   return (
     <>
@@ -26,7 +36,13 @@ export function ShowTradesView() {
               trades
                 .filter(trade => trade.trade_status === false)
                 .filter(trade => userContext.user ? trade.owner_id !== userContext.user.id : true)
-                .map((trade, i) => <TradeCard key={i} {...trade} />)
+                .map(trade => {
+                  if (userContext.user && pinned.find((pin) => pin.id === trade.id)) {
+                    trade.pinned = true;
+                  } else trade.pinned = false;
+                  return trade;
+                })
+                .map((trade, i) => <TradeCard key={i} {...trade} loggedIn={userContext.user ? userContext.user.id : null}/>)
             }
           </FlexContainerVertical>
       }

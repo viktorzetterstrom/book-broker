@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS "message";
+DROP TABLE IF EXISTS "pinned_trade";
 DROP TABLE IF EXISTS "trade";
 DROP TABLE IF EXISTS "user";
 
@@ -31,6 +32,14 @@ CREATE TABLE "message" (
   trade_id INTEGER,
   user_id INTEGER,
   timestamp timestamp default current_timestamp,
+  FOREIGN KEY (trade_id) REFERENCES "trade"(id),
+  FOREIGN KEY (user_id) REFERENCES "user"(id)
+);
+
+CREATE TABLE "pinned_trade" (
+  id SERIAL PRIMARY KEY,
+  trade_id INTEGER,
+  user_id INTEGER,
   FOREIGN KEY (trade_id) REFERENCES "trade"(id),
   FOREIGN KEY (user_id) REFERENCES "user"(id)
 );

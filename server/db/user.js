@@ -27,8 +27,38 @@ const getById = (id, cb) => {
     });
 };
 
+const deletePinnedTradeById = (tradeId, userId, cb) => {
+  pool.query('DELETE FROM "pinned_trade" WHERE trade_id=$1 AND user_id=$2',
+    [tradeId, userId],
+    (error, result) => {
+      if (error) return cb(error);
+      cb(null, result.rows);
+    });
+};
+
+const addPinnedTrade = (tradeId, userId, cb) => {
+  pool.query('INSERT INTO "pinned_trade" (trade_id, user_id) VALUES ($1, $2)',
+    [tradeId, userId],
+    (error, result) => {
+      if (error) return cb(error);
+      cb(null, result.rows);
+    });
+};
+
+const getPinnedTrades = (id, cb) => {
+  pool.query('SELECT "trade".* FROM "trade" INNER JOIN "pinned_trade" ON "pinned_trade".trade_id = "trade".id AND "pinned_trade".user_id = $1',
+    [id],
+    (error, result) => {
+      if (error) return cb(error);
+      cb(null, result.rows);
+    });
+};
+
 module.exports = {
   add,
   getByName,
-  getById
+  getById,
+  addPinnedTrade,
+  getPinnedTrades,
+  deletePinnedTradeById
 };

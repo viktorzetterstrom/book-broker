@@ -85,9 +85,9 @@ export const Messages = ({ messages, ownerName }) => {
       <FlexContainerVertical>
         {
           messages
-            .map(({ message, username, timestamp }) =>
+            .map(({ message, username, timestamp }, i) =>
               userContext.user.username === username
-                ? <Message user>{message}
+                ? <Message key={i} user>{message}
                   <MessageUser user>{username}</MessageUser>
                   {
                     ownerName === username
@@ -97,7 +97,7 @@ export const Messages = ({ messages, ownerName }) => {
 
                   <MessageTimestamp user>{formatTimeStamp(timestamp)}</MessageTimestamp>
                 </Message>
-                : <Message>{message}
+                : <Message key={i}>{message}
                   <MessageUser>{username}</MessageUser>
                   {
                     ownerName === username
