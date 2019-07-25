@@ -1,15 +1,16 @@
 .pin {
   visibility: hidden;
-  color: var(--secondary-color-dark);
   font-size: 30px;
+}
+.pin + label:before {
+  content: "\2606";
+  color: var(--secondary-color-dark);
+  position: absolute;
   cursor: pointer;
 }
-.pin:before {
-  content: "\2606";
-  position: absolute;
-  visibility: visible;
-}
-.pin:checked:before {
+.pin:checked +  :before {
   content: "\2605";
+  color: var(--secondary-color-dark);
   position: absolute;
+  cursor: pointer;
 }

@@ -5,12 +5,12 @@ import UserContext from '../../contexts/UserContext';
 
 const formatTimeStamp = ts => {
   const d = new Date(ts);
-  const time = `${d.getHours()}:${d.getMinutes()}`;
+  const time = `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
   const date = `${d.getDate()}/${d.getMonth()}`;
   return `${time} - ${date}`;
 };
 
-const Message = styled.div`
+const Message = styled.div`   
   padding: 20px;
   margin: 10px 10px;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.315);
