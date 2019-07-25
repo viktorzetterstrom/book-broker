@@ -2,10 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import { PrivateRoute } from './authentication';
-import { RegisterView, LoginView, AddTradeView, ShowTradesView, ShowTradeView, EditTradeView, ProfileView } from './views';
+import { RegisterView, LoginView, AddTradeView, ShowTradesView, ShowTradeView, EditTradeView, ProfileView, AboutView } from './views';
 import { UserProvider } from '../contexts/UserContext';
 import { NavBar, Chat } from './basic-components';
-
 
 function App() {
   const [user, setUser] = useState(null);
@@ -28,11 +27,12 @@ function App() {
             <Route exact path="/login" component={LoginView} />
             <Route exact path="/register" component={RegisterView} />
             <Route exact path='/trades' component={ShowTradesView} />
+            <Route exact path='/about' component={AboutView} />
             <Route exact path='/profiles/:id' component={ProfileView} />
             <Switch>
               <Route exact path='/trades/add' component={AddTradeView} />
               <Route exact path='/trades/:id/edit' component={EditTradeView} />
-              <Route exact path='/trades/:id' component={ShowTradeView} />
+              <Route path='/trades/:id' component={ShowTradeView} />
             </Switch>
           </>
         </BrowserRouter>

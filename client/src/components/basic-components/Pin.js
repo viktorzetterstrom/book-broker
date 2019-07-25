@@ -2,15 +2,16 @@ import React, { useContext, useState } from 'react';
 import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
 import { Star } from './Star';
+import notifyService from '../../services/notify-service';
 
 const PinContainer = styled.div`
   position: absolute;
-  top: 0;
-  right: 30px;;
+  top: 0px;
+  right: 30px;
 `
 
 
-export const Pin = ({ tradeId, isPinned }) => {
+export const Pin = ({ title, tradeId, isPinned }) => {
   const { user } = useContext(UserContext);
 
   const pinTrade = (e) => {
@@ -22,6 +23,7 @@ export const Pin = ({ tradeId, isPinned }) => {
         },
         body: JSON.stringify({ tradeId })
       });
+      notifyService.pinAdded(title);
     } else {
       fetch(`/api/users/${user.id}/pinned`, {
         method: 'DELETE',
@@ -30,6 +32,7 @@ export const Pin = ({ tradeId, isPinned }) => {
         },
         body: JSON.stringify({ tradeId })
       });
+      notifyService.pinRemoved(title);
     }
   };
 

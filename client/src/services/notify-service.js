@@ -108,6 +108,28 @@ const tradeDeleted = (bookname) => PNotify.info({
   addClass: 'secondary-notification'
 });
 
+const pinAdded = (bookname) => PNotify.info({
+  title: "Trade pinned",
+  text: `${bookname} succesfully pinned`,
+  delay: 4000,
+  width: 300,
+  animation: 'fade',
+  mouseReset: false,
+  stack: stackBottomModal,
+  addClass: 'primary-notification'
+});
+
+const pinRemoved = (bookname) => PNotify.info({
+  title: "Trade unpinned",
+  text: `${bookname} unpinned`,
+  delay: 4000,
+  width: 300,
+  animation: 'fade',
+  mouseReset: false,
+  stack: stackBottomModal,
+  addClass: 'secondary-notification'
+});
+
 const notifyService = {
   registerSuccess,
   registerFailure,
@@ -117,7 +139,9 @@ const notifyService = {
   tradeCreated,
   tradeCompleted,
   tradeUpdated,
-  tradeDeleted
+  tradeDeleted,
+  pinAdded,
+  pinRemoved,
 }
 
 export default notifyService;

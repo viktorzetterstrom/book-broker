@@ -13,3 +13,4 @@ export * from './Or';
 export * from './Chat';
 export * from './Messages';
 export * from './Pin';
+export * from './Email';

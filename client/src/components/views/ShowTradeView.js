@@ -3,6 +3,18 @@ import { FlexContainerVertical, TradeCard, Spinner, ContactForm, Button, Chat } 
 import UserContext from '../../contexts/UserContext';
 import { Redirect, Link } from 'react-router-dom';
 import notifyService from '../../services/notify-service';
+import styled from 'styled-components';
+
+const StyledDiv = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  padding: 15px 0;
+  margin-bottom: 10px;
+  margin-top: -15px;
+  background-color: var(--gray-light);
+`
+
 
 export function ShowTradeView({ match }) {
   const [trade, setTrade] = useState({ loading: true });
@@ -24,11 +36,11 @@ export function ShowTradeView({ match }) {
 
   const TradeOptions = () => {
     return (
-      <div>
+      <StyledDiv>
         <Link to={`/trades/${match.params.id}/edit`}><Button card primary>Edit</Button></Link>
         <Button card onClick={deleteTrade} tertiary>Delete</Button>
         <Button card onClick={completeTrade} secondary>Complete</Button>
-      </div>
+      </StyledDiv>
     );
   }
 
@@ -40,8 +52,11 @@ export function ShowTradeView({ match }) {
   }, [match.params.id]);
 
   const ownerUserAlternatives = () => userContext.user && userContext.user.id === trade.owner_id
-    ? <TradeOptions />
-    : <ContactForm {...trade} />;
+    ? <>
+    <TradeOptions />
+    <Chat tradeId={match.params.id} ownerName={trade.username} userId={userContext.user.id} />
+    </>
+    : <ContactForm {...trade} tradeId={match.params.id} ownerName={trade.username} userId={userContext.user.id}/>;
 
   return (
     redirect
@@ -55,9 +70,6 @@ export function ShowTradeView({ match }) {
                 ? ownerUserAlternatives()
                 : <></>
               }
-              {userContext.user
-                ? <Chat tradeId={match.params.id} ownerName={trade.username} userId={userContext.user.id} />
-                : <></>}
             </>
         }
       </FlexContainerVertical>

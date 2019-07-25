@@ -1,34 +1,38 @@
 import React, { useState, useEffect, useContext } from 'react';
 import queryString from 'query-string';
-import { Form, Button, InputContainer, Textarea, Label } from './';
+import { Form, Button, InputContainer, Textarea, Label, Chat, Email } from './';
 import UserContext from '../../contexts/UserContext';
+import { Switch, Link, Route } from 'react-router-dom';
+import { FlexContainerHorizontal } from './FlexContainerHorizontal';
+import styled from 'styled-components';
 
-const createQueryString = (message, subject) => queryString.stringify({
-  subject: subject,
-  body: message,
-});
-
-export function ContactForm({ email, book_title }) {
-  const [message, setMessage] = useState('');
-  const [query, setQuery] = useState(createQueryString(message, book_title));
-  const userContext = useContext(UserContext);
-
-  useEffect(() => {
-    setQuery(createQueryString(message, book_title));
-  }, [message, book_title])
-
-  const updateMessage = e => {
-    setMessage(e.target.value)
-  };
-
-  return userContext.user
-    ? <Form action={`mailto:${email}?${query}`} method='post' enctype="text/plain" onChange={updateMessage}>
-      <h3>Contact book owner</h3>
-      <InputContainer>
-        <Textarea></Textarea>
-        <Label>Message</Label>
-      </InputContainer>
-      <Button primary>Contact</Button>
-    </Form>
-    : <></>;
+const ContactDiv = styled.div`
+  width: 100%;
+  padding: 15px 0;
+  margin-bottom: 10px;
+  background-color: var(--gray-light);
+`;
+export function ContactForm({ email, book_title, tradeId, ownerName, userId }) {
+  return (
+    <>
+      <h2>Contact owner of this book</h2>
+      <ContactDiv>
+        <FlexContainerHorizontal evenly>
+          <Link to={`/trades/${tradeId}/chat`}><Button primary card>Chat</Button></Link>
+          <Link to={`/trades/${tradeId}/email`}><Button secondary card>Email</Button></Link>
+        </FlexContainerHorizontal>
+      </ContactDiv>
+      <Switch>
+        <Route
+          exact path={`/trades/${tradeId}/chat`}
+          render={(routeProps) => (
+            <Chat {...routeProps} ownerName={ownerName} tradeId={tradeId} userId={userId} />
+          )} />
+        <Route path={`/trades/${tradeId}/email`}
+          render={(routeProps) => (
+            <Email {...routeProps} email={email} book_title={book_title} />
+          )} />
+      </Switch>
+    </>
+  );
 }

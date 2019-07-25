@@ -5,13 +5,14 @@ import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
 
 const Heading = styled.h2`
+  width: 80%;
   margin-top: 0;
-  font-size: 18px;
+  font-size: 14px;
 `
 
 const Details = styled.div`
   margin: 0;
-  font-size: 12px;
+  font-size: 10px;
 `
 
 const CardContainer = styled.div`
@@ -105,7 +106,7 @@ export function TradeCard({
           </Details>
           {
             loggedIn && loggedIn !== owner_id
-              ? <Pin tradeId={id} isPinned={pinned}/>
+              ? <Pin title={book_title} tradeId={id} isPinned={pinned}/>
               : <></>
           }
           {

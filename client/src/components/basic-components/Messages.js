@@ -3,7 +3,12 @@ import { Button, FlexContainerVertical } from '.';
 import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
 
-const formatTimeStamp = ts => new Date(ts).toLocaleTimeString();
+const formatTimeStamp = ts => {
+  const d = new Date(ts);
+  const time = `${d.getHours()}:${d.getMinutes()}`;
+  const date = `${d.getDate()}/${d.getMonth()}`;
+  return `${time} - ${date}`;
+};
 
 const Message = styled.div`
   padding: 20px;
@@ -72,8 +77,9 @@ const TradeOwner = styled.div`
 
 const MessageContainer = styled.div`
   background-color: var(--gray-light);
-  margin-top: 30px;
-  width: 80%;
+  margin-top: 10px;
+  width: 100%;
+  padding: 15px 0px;
   border-radius: 3px;
 `;
 
