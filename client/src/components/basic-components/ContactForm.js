@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
-import queryString from 'query-string';
-import { Form, Button, InputContainer, Textarea, Label, Chat, Email } from './';
-import UserContext from '../../contexts/UserContext';
+import React from 'react';
+import { Button, Chat, Email } from './';
 import { Switch, Link, Route } from 'react-router-dom';
 import { FlexContainerHorizontal } from './FlexContainerHorizontal';
 import styled from 'styled-components';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlexContainerVertical, TradeCard, Spinner, Header, HeaderText, HeaderTitle } from '../basic-components';
+import { Header, HeaderText, HeaderTitle } from '../basic-components';
 import styled from 'styled-components';
 
 const StyledLi = styled.li`
@@ -38,7 +38,7 @@ export function AboutView() {
           <StyledLi><i class="material-icons md-36">search</i> Browse other peoples books.</StyledLi>
           <StyledLi><i class="material-icons md-36">comment</i> Send a email or a message if you are interested.</StyledLi>
           <StyledLi><i class="material-icons md-36">thumb_up</i> Setup a trade together.</StyledLi>
-          <StyledLi><i class="material-icons md-36">repeat</i> Repeat as many times as you like, there's a lot of books to read out</StyledLi>
+          <StyledLi><i class="material-icons md-36">repeat</i> Repeat as many times as you like, there's a lot of books to read!</StyledLi>
         </StyledUl>
       </StyledContainer>
     </>

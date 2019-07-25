@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Button, FlexContainerVertical } from '.';
+import { FlexContainerVertical } from '.';
 import styled from 'styled-components';
 import UserContext from '../../contexts/UserContext';
 

@@ -10,6 +10,8 @@ const StyledButton = styled.button`
   color: var(--gray-dark);
   border-radius: 3px;
   padding: 8px 12px;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.315);
+  border: none;
   margin-top: 5px;
   width: ${props => props.card ? 'auto' : '200px'};
   transition: 0.3s;

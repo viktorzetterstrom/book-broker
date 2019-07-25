@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import queryString from 'query-string';
-import { Form, Button, InputContainer, Textarea, Label, Chat } from './';
+import { Form, Button, InputContainer, Textarea, Label } from './';
 
 
 const createQueryString = (message, subject) => queryString.stringify({

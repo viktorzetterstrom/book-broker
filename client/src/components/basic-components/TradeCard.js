@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components';
 import StarRatings from 'react-star-ratings';
 
-const Heading = styled.h2`
+const Heading = styled.h3`
   width: 80%;
   margin-top: 0;
   font-size: 14px;
@@ -19,6 +19,7 @@ const CardContainer = styled.div`
   width: 100%;
   margin-bottom: 15px;
   border-top: 1px solid lightgrey;
+  background-color: var(--gray-light);
   border-bottom: 1px solid lightgrey;
   transition: 0.2s ease-in-out;
   :hover {

@@ -17,7 +17,6 @@ export function ShowTradesView() {
     if (userContext.user) {
       fetch(`/api/users/${userContext.user.id}/pinned`)
         .then(result => result.json())
-        .then(json => {console.log(json); return json})
         .then(json => setPinned(json));
     }
   }, [userContext]);
