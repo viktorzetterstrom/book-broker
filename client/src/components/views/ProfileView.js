@@ -28,7 +28,7 @@ export function ProfileView({ match }) {
             .map((trade, i) => <TradeCard key={i} {...trade} loggedIn={userContext.user ? userContext.user.id : false} />)
         )
       }, 800));
-  }, [match.params.id]);
+  }, [match.params.id, userContext.user]);
 
   useEffect(() => {
     fetch(`/api/users/${match.params.id}`)

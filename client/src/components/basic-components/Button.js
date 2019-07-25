@@ -23,7 +23,7 @@ const StyledButton = styled.button`
     if (props.tertiary) return '--tertiary-color-dark';
   }});
   color: var(${ props => {
-    if (props.primary) return '--gray-dark';
+    if (props.primary) return '--gray-light';
     if (props.secondary) return '--gray-light';
     if (props.tertiary) return '--gray-light';
   }});

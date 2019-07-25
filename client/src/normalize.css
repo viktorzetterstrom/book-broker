@@ -361,7 +361,7 @@ a {
     text-decoration: none;
 }
 
-/* @import url('https://fonts.googleapis.com/css?family=Handlee|Open+Sans:400,700&display=swap'); */
+@import url('https://fonts.googleapis.com/css?family=Handlee|Open+Sans:400,700&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Lobster|Oswald:400,700&display=swap');
 h1, h2 {
   font-family: 'Lobster', 'serif';
@@ -376,7 +376,7 @@ body {
   --secondary-color: #dfc5af;
   --tertiary-color: #dfafb7;
 
-  --primary-color-dark: #2ae3a2;
+  --primary-color-dark: #1fa37b;
   --secondary-color-dark: #e07529;
   --tertiary-color-dark: #e02948;
 
@@ -388,16 +388,18 @@ body {
   background-color: var(--primary-color) !important;
   border-radius: 3px !important;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.315);
+  width: 80%
 }
 
 .secondary-notification {
   background-color: var(--secondary-color) !important;
   border-radius: 3px !important;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.315);
+  width: 80%
 }
 
 .tertiary-notification {
   background-color: var(--tertiary-color) !important;
-  border-radius: 3px !important;
   box-shadow: 0 0 4px rgba(0, 0, 0, 0.315);
+  width: 80%
 }

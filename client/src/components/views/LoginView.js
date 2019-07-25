@@ -8,7 +8,7 @@ export function LoginView() {
     <div>
       <Header>
         <HeaderTitle>Bookbroker</HeaderTitle>
-        <HeaderText>BookBroker is an app for trading your old books for new ones.</HeaderText>
+        <HeaderText>Bookbroker is an app for trading your old books for new ones.</HeaderText>
         <Link to="/trades"><Button primary>Browse</Button></Link>
       </Header>
       <FlexContainerVertical>

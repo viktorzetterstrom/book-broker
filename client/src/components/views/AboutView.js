@@ -34,11 +34,11 @@ export function AboutView() {
       </Header>
       <StyledContainer>
         <StyledUl>
-          <StyledLi><i class="material-icons md-36">library_add</i> Add your books on your profile.</StyledLi>
-          <StyledLi><i class="material-icons md-36">search</i> Browse other peoples books.</StyledLi>
-          <StyledLi><i class="material-icons md-36">comment</i> Send a email or a message if you are interested.</StyledLi>
-          <StyledLi><i class="material-icons md-36">thumb_up</i> Setup a trade together.</StyledLi>
-          <StyledLi><i class="material-icons md-36">repeat</i> Repeat as many times as you like, there's a lot of books to read!</StyledLi>
+          <StyledLi><i className="material-icons md-36">library_add</i> Add your books on your profile.</StyledLi>
+          <StyledLi><i className="material-icons md-36">search</i> Browse other peoples books.</StyledLi>
+          <StyledLi><i className="material-icons md-36">comment</i> Send a email or a message if you are interested.</StyledLi>
+          <StyledLi><i className="material-icons md-36">thumb_up</i> Setup a trade together.</StyledLi>
+          <StyledLi><i className="material-icons md-36">repeat</i> Repeat as many times as you like, there's a lot of books to read!</StyledLi>
         </StyledUl>
       </StyledContainer>
     </>

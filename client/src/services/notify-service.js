@@ -1,18 +1,19 @@
 import PNotify from 'pnotify/dist/es/PNotify';
-import PNotifyStyleMaterial from 'pnotify/dist/es/PNotifyStyleMaterial.js';
+import 'pnotify/dist/es/PNotifyStyleMaterial.js';
 // PNotify.defaults.styling = 'material';
 PNotify.defaults.icons = 'material';
 
 const stackBottomModal = {
   dir1: 'up',
-  firstpos1: 25,
+  firstpos1: 20,
+  spacing1: 10,
   push: 'top',
 };
 
 const registerSuccess = () => PNotify.success({
   title: "Account created",
   text: "Welcome to Bookbroker",
-  delay: 4000,
+  delay: 2500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -23,7 +24,7 @@ const registerSuccess = () => PNotify.success({
 const registerFailure = () => PNotify.error({
   title: "Registration failed",
   text: "Username already taken",
-  delay: 4000,
+  delay: 2500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -34,7 +35,7 @@ const registerFailure = () => PNotify.error({
 const loginSuccess = username => PNotify.success({
   title: "Login successful",
   text: `Welcome ${username}, to Bookbroker`,
-  delay: 4000,
+  delay: 2500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -45,7 +46,7 @@ const loginSuccess = username => PNotify.success({
 const logoutSuccess = () => PNotify.info({
   title: "Logged out",
   text: "We will miss you",
-  delay: 4000,
+  delay: 2500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -56,7 +57,7 @@ const logoutSuccess = () => PNotify.info({
 const loginFailure = () => PNotify.error({
   title: "Login failed",
   text: "Wrong credentials provided",
-  delay: 4000,
+  delay: 2500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -67,7 +68,7 @@ const loginFailure = () => PNotify.error({
 const tradeCreated = (bookname) => PNotify.success({
   title: "Trade created",
   text: `${bookname} added`,
-  delay: 4000,
+  delay: 1500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -78,7 +79,7 @@ const tradeCreated = (bookname) => PNotify.success({
 const tradeCompleted = (bookname) => PNotify.success({
   title: "Congratulations!",
   text: `Traded ${bookname}.`,
-  delay: 4000,
+  delay: 1500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -89,7 +90,7 @@ const tradeCompleted = (bookname) => PNotify.success({
 const tradeUpdated = (bookname) => PNotify.info({
   title: "Trade updated",
   text: `${bookname} updated`,
-  delay: 4000,
+  delay: 1500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -100,7 +101,7 @@ const tradeUpdated = (bookname) => PNotify.info({
 const tradeDeleted = (bookname) => PNotify.info({
   title: "Trade deleted",
   text: `${bookname} deleted`,
-  delay: 4000,
+  delay: 1500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -111,7 +112,7 @@ const tradeDeleted = (bookname) => PNotify.info({
 const pinAdded = (bookname) => PNotify.info({
   title: "Trade pinned",
   text: `${bookname} succesfully pinned`,
-  delay: 4000,
+  delay: 1500,
   width: 300,
   animation: 'fade',
   mouseReset: false,
@@ -122,7 +123,7 @@ const pinAdded = (bookname) => PNotify.info({
 const pinRemoved = (bookname) => PNotify.info({
   title: "Trade unpinned",
   text: `${bookname} unpinned`,
-  delay: 4000,
+  delay: 1500,
   width: 300,
   animation: 'fade',
   mouseReset: false,

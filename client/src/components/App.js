@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import { BrowserRouter, Route, Switch} from 'react-router-dom'
-import { PrivateRoute } from './authentication';
 import { RegisterView, LoginView, AddTradeView, ShowTradesView, ShowTradeView, EditTradeView, ProfileView, AboutView } from './views';
 import { UserProvider } from '../contexts/UserContext';
 import { NavBar } from './basic-components';
@@ -30,8 +29,8 @@ function App() {
             <Route exact path='/about' component={AboutView} />
             <Route exact path='/profiles/:id' component={ProfileView} />
             <Switch>
-              <PrivateRoute exact path='/trades/add' component={AddTradeView} />
-              <PrivateRoute exact path='/trades/:id/edit' component={EditTradeView} />
+              <Route exact path='/trades/add' component={AddTradeView} />
+              <Route exact path='/trades/:id/edit' component={EditTradeView} />
               <Route path='/trades/:id' component={ShowTradeView} />
             </Switch>
           </>

@@ -13,13 +13,13 @@ export const Chat = ({ tradeId, ownerName, userId }) => {
     fetch(`/api/trades/${tradeId}/messages`)
       .then(res => res.json())
       .then(setMessages);
-  }, []);
+  }, [tradeId]);
 
   useEffect(() => {
     socket.on(tradeId, function (msg) {
       setMessages([msg, ...messages]);
     });
-  }, [messages])
+  }, [messages, tradeId])
 
   const saveChat = (e) => {
     e.preventDefault();

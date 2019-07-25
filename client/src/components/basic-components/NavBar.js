@@ -23,6 +23,7 @@ const StyledNavButton = styled.div`
   cursor: pointer;
   :hover {
     background-color: var(--primary-color-dark);
+    color: var(--gray-light);
   }
 `;
 
