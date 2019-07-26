@@ -7,7 +7,7 @@ import UserContext from '../../contexts/UserContext';
 const formatTimeStamp = ts => {
   const d = new Date(ts);
   const time = `${d.getHours().toString().padStart(2, '0')}:${d.getMinutes().toString().padStart(2, '0')}`;
-  const date = `${d.getDate()}/${d.getMonth()}`;
+  const date = `${d.getDate()}/${d.getMonth() + 1}`;
   return `${time} - ${date}`;
 };
 
