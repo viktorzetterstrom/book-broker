@@ -12,7 +12,7 @@ const stackBottomModal = {
 
 const registerSuccess = () => PNotify.success({
   title: "Account created",
-  text: "Welcome to Bookbroker",
+  text: "Welcome to Bookbroker!",
   delay: 2500,
   width: 300,
   animation: 'fade',
@@ -23,7 +23,7 @@ const registerSuccess = () => PNotify.success({
 
 const registerFailure = () => PNotify.error({
   title: "Registration failed",
-  text: "Username already taken",
+  text: "Username already taken.",
   delay: 2500,
   width: 300,
   animation: 'fade',
@@ -34,7 +34,7 @@ const registerFailure = () => PNotify.error({
 
 const loginSuccess = username => PNotify.success({
   title: "Login successful",
-  text: `Welcome ${username}, to Bookbroker`,
+  text: `Welcome ${username}!`,
   delay: 2500,
   width: 300,
   animation: 'fade',
@@ -45,7 +45,7 @@ const loginSuccess = username => PNotify.success({
 
 const logoutSuccess = () => PNotify.info({
   title: "Logged out",
-  text: "We will miss you",
+  text: "We will miss you!",
   delay: 2500,
   width: 300,
   animation: 'fade',
@@ -56,7 +56,7 @@ const logoutSuccess = () => PNotify.info({
 
 const loginFailure = () => PNotify.error({
   title: "Login failed",
-  text: "Wrong credentials provided",
+  text: "Wrong credentials provided.",
   delay: 2500,
   width: 300,
   animation: 'fade',
@@ -67,7 +67,7 @@ const loginFailure = () => PNotify.error({
 
 const tradeCreated = (bookname) => PNotify.success({
   title: "Trade created",
-  text: `${bookname} added`,
+  text: `${bookname}`,
   delay: 1500,
   width: 300,
   animation: 'fade',
@@ -89,7 +89,7 @@ const tradeCompleted = (bookname) => PNotify.success({
 
 const tradeUpdated = (bookname) => PNotify.info({
   title: "Trade updated",
-  text: `${bookname} updated`,
+  text: `${bookname} updated.`,
   delay: 1500,
   width: 300,
   animation: 'fade',
@@ -100,7 +100,7 @@ const tradeUpdated = (bookname) => PNotify.info({
 
 const tradeDeleted = (bookname) => PNotify.info({
   title: "Trade deleted",
-  text: `${bookname} deleted`,
+  text: `${bookname}`,
   delay: 1500,
   width: 300,
   animation: 'fade',
@@ -111,7 +111,7 @@ const tradeDeleted = (bookname) => PNotify.info({
 
 const pinAdded = (bookname) => PNotify.info({
   title: "Trade pinned",
-  text: `${bookname} succesfully pinned`,
+  text: `${bookname}`,
   delay: 1500,
   width: 300,
   animation: 'fade',
@@ -122,7 +122,7 @@ const pinAdded = (bookname) => PNotify.info({
 
 const pinRemoved = (bookname) => PNotify.info({
   title: "Trade unpinned",
-  text: `${bookname} unpinned`,
+  text: `${bookname}`,
   delay: 1500,
   width: 300,
   animation: 'fade',

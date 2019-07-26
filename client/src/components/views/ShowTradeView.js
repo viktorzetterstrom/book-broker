@@ -56,7 +56,9 @@ export function ShowTradeView({ match }) {
     <TradeOptions />
     <Chat tradeId={match.params.id} ownerName={trade.username} userId={userContext.user.id} />
     </>
-    : <ContactForm {...trade} tradeId={match.params.id} ownerName={trade.username} userId={userContext.user.id}/>;
+    : userContext.user
+      ? <ContactForm {...trade} tradeId={match.params.id} ownerName={trade.username} userId={userContext.user.id}/>
+      : <></>;
 
   return (
     redirect

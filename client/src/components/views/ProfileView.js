@@ -76,7 +76,7 @@ export function ProfileView({ match }) {
             {
               activeTrades.length > 0
                 ? activeTrades
-                : <StyledP>You have no active trades</StyledP>
+                : <StyledP>There are no active trades</StyledP>
             }
 
             {
@@ -102,7 +102,7 @@ export function ProfileView({ match }) {
                       .map((trade, i) => <TradeCard key={i} {...trade} loggedIn={userContext.user ? userContext.user.id : false} />)
                   }
                 </>
-                : <StyledP>You have no pinned trades</StyledP>
+                : <StyledP>There are no pinned trades</StyledP>
             }
           </FlexContainerVertical>
       }

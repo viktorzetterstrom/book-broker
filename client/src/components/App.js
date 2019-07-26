@@ -4,6 +4,8 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom'
 import { RegisterView, LoginView, AddTradeView, ShowTradesView, ShowTradeView, EditTradeView, ProfileView, AboutView } from './views';
 import { UserProvider } from '../contexts/UserContext';
 import { NavBar } from './basic-components';
+import { PrivateRoute } from './authentication';
+import authService from '../services/auth-service';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -12,7 +14,10 @@ function App() {
     fetch('/api/users/loggedin')
       .then(res => res.json())
       .then(json => {
-        if (json.loggedIn) setUser(json);
+        if (json.loggedIn) {
+          setUser(json);
+          authService.isAuthenticated = true;
+        }
       });
   }, []);
 
@@ -29,8 +34,8 @@ function App() {
             <Route exact path='/about' component={AboutView} />
             <Route exact path='/profiles/:id' component={ProfileView} />
             <Switch>
-              <Route exact path='/trades/add' component={AddTradeView} />
-              <Route exact path='/trades/:id/edit' component={EditTradeView} />
+              <PrivateRoute exact path='/trades/add' component={AddTradeView} />
+              <PrivateRoute exact path='/trades/:id/edit' component={EditTradeView} />
               <Route path='/trades/:id' component={ShowTradeView} />
             </Switch>
           </>

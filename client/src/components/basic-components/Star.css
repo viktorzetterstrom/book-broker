@@ -1,16 +1,24 @@
 .pin {
   visibility: hidden;
+
+}
+.pin + label {
+  position: relative;
+  transition: 0.3s;
+  text-align: center;
   font-size: 30px;
+}
+.pin + label:hover {
+  font-size: 32px;
 }
 .pin + label:before {
   content: "\2606";
   color: var(--secondary-color-dark);
-  position: absolute;
   cursor: pointer;
 }
 .pin:checked +  :before {
   content: "\2605";
   color: var(--secondary-color-dark);
-  position: absolute;
+  position: relative;
   cursor: pointer;
 }

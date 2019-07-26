@@ -13,7 +13,7 @@ const add = (message, tradeId, userId, cb) => {
 };
 
 const getByTradeId = (id, cb) => {
-  pool.query('SELECT "message".*, "user".username FROM "message" INNER JOIN "user" ON "user".id = "message".user_id WHERE "message".trade_id = $1 ORDER BY "message".timestamp DESC',
+  pool.query('SELECT "message".*, "user".username, "user".id FROM "message" INNER JOIN "user" ON "user".id = "message".user_id WHERE "message".trade_id = $1 ORDER BY "message".timestamp DESC',
     [id],
     (error, result) => {
       if (error) return cb(error);

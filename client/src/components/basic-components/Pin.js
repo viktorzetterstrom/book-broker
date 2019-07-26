@@ -6,8 +6,8 @@ import notifyService from '../../services/notify-service';
 
 const PinContainer = styled.div`
   position: absolute;
-  top: 6px;
-  right: 35px;
+  top: 0px;
+  right: 10px;
 `
 
 
